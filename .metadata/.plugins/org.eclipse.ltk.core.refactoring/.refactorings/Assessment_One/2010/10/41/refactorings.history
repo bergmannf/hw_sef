@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;cost&apos; in &apos;uk.heriotwatt.sef.model.Cabin.getCost()&apos; to &apos;minimalCost&apos;&#x0A;- Original project: &apos;Assessment_One&apos;&#x0A;- Original element: &apos;uk.heriotwatt.sef.model.Cabin.getCost().cost&apos;&#x0A;- Renamed element: &apos;cost&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;cost&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;uk.heriotwatt.sef.model{Cabin.java[Cabin~getCost@cost!1530!1547!1537!1540!D" name="minimalCost" references="true" stamp="1286881682945" version="1.0"/>
-</session>
