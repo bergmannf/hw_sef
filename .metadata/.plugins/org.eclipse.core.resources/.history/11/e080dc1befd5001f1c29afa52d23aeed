@@ -1,0 +1,18 @@
+package uk.heriotwatt.sef.model;
+
+public enum PriceList {
+	
+	VERY_EXPENSIVE(10),
+	EXPENSIVE,
+	FAIR,
+	BUDGET,
+	CHEAP,
+	UNKNOWN
+	
+	private final cost;
+	
+	private PriceList(double cost) {
+		this.cost = PriceList.cost;
+	}
+
+}

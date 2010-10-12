@@ -1,0 +1,12 @@
+package uk.heriotwatt.sef.model.tests;
+
+
+import org.junit.Before;
+
+public class CabinTests {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+}

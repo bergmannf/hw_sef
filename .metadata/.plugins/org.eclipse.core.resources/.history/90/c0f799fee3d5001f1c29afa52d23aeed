@@ -1,0 +1,58 @@
+package uk.heriotwatt.sef.model;
+
+import java.util.Date;
+
+/**
+ * Stores values associated with a cabin.
+ * 
+ * @author fhb2
+ * 
+ */
+public class Cabin {
+
+	public int cabinNumber;
+	public int numberOfBeds;
+	public Facilities facilities;
+	public Name owner;
+	public Date buildDate;
+	public double size;
+	public Condition condition;
+
+	public int getCabinNumber() {
+		return cabinNumber;
+	}
+
+	public void setCabinNumber(int cabinNumber) {
+		this.cabinNumber = cabinNumber;
+	}
+
+	public int getNumberOfBeds() {
+		return numberOfBeds;
+	}
+
+	public void setNumberOfBeds(int numberOfBeds) {
+		if (numberOfBeds > 1 && numberOfBeds < 9) {
+			this.numberOfBeds = numberOfBeds;
+		} else {
+			throw new IllegalArgumentException(
+					"Number of beds must be between 2 and 8.");
+		}
+	}
+
+	public Facilities getFacilities() {
+		return facilities;
+	}
+
+	public void setFacilities(Facilities facilities) {
+		this.facilities = facilities;
+	}
+
+	public Name getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Name owner) {
+		this.owner = owner;
+	}
+
+}

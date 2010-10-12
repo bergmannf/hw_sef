@@ -1,0 +1,10 @@
+package uk.heriotwatt.sef.model;
+
+public enum Facilities {
+	
+	GENERAL_FACILITES,
+	SEPERATE_BATHROOM,
+	EN_SUITE,
+	UNKNOWN
+
+}
