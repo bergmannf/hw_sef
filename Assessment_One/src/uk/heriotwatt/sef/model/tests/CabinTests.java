@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import uk.heriotwatt.sef.model.Cabin;
-import uk.heriotwatt.sef.model.Facilities;
-import uk.heriotwatt.sef.model.PriceList;
 
 public class CabinTests {
 	

@@ -1,8 +1,6 @@
 package uk.heriotwatt.sef.model;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Stores values associated with a cabin.
@@ -20,16 +18,12 @@ public class Cabin {
 	public Date buildDate;
 	public Condition condition;
 	
-	private final int BED_TO_ROOM_RATIO_MULTIPLIER = 5;
 	private final double MINIMUM_COST = 10;
 	
-	private Map<Condition, Double> conditionPrices;
-	private Map<Facilities, Double> facilityPrices;
-	
+	private PriceManager data = new PriceManager(5);
+
 	public Cabin()
 	{
-		this.initializeConditionPriceMapping();
-		this.initializeFacilityPriceMapping();
 	}
 
 	public int getCabinNumber() {
@@ -90,12 +84,13 @@ public class Cabin {
 	public double getCost() {
 		double minimalCost = MINIMUM_COST;
 		
-		double conditionModifier = this.conditionPrices.get(this.condition);
-		double faciltiesModifier = this.facilityPrices.get(this.facilities);
-		double sizeModifier = this.getSizeModifier();
-		double bedToRoomRatio = this.calculateBedToRoomRation();
+		double conditionModifier = this.data.getConditionPrice(this.condition);
+		double faciltiesModifier = this.data.getFacilityPrice(this.facilities);
+		double sizeModifier = this.data.getSizeModifier(this.size);
+		double bedToRoomRatio = this.calculateBedToRoomRatio();
 		
-		minimalCost = minimalCost + conditionModifier + faciltiesModifier + sizeModifier + (bedToRoomRatio * BED_TO_ROOM_RATIO_MULTIPLIER);
+		minimalCost = minimalCost + conditionModifier + faciltiesModifier + sizeModifier + (data.BED_TO_ROOM_RATIO_MULTIPLIER * bedToRoomRatio);
+		
 		return minimalCost;
 	}
 
@@ -107,53 +102,7 @@ public class Cabin {
 		return result;
 	}
 	
-	/**
-	 * Adds Condition - Price pairs to a map.
-	 * Will be used in the getCost() method.
-	 */
-	private void initializeConditionPriceMapping() {
-		this.conditionPrices = new HashMap<Condition, Double>();
-		this.conditionPrices.put(Condition.PERFECT, PriceList.VERY_EXPENSIVE.cost());
-		this.conditionPrices.put(Condition.GOOD, PriceList.EXPENSIVE.cost());
-		this.conditionPrices.put(Condition.FAIR, PriceList.FAIR.cost());
-		this.conditionPrices.put(Condition.BAD, PriceList.BUDGET.cost());
-		this.conditionPrices.put(Condition.IN_SHAMBLES, PriceList.CHEAP.cost());
-	}
-	
-	/**
-	 * Adds Facilities - Price pairs to a map.
-	 * Will be used in the getCost() method.
-	 */
-	private void initializeFacilityPriceMapping() {
-		this.facilityPrices = new HashMap<Facilities, Double>();
-		this.facilityPrices.put(Facilities.EN_SUITE, PriceList.VERY_EXPENSIVE.cost());
-		this.facilityPrices.put(Facilities.SEPERATE_BATHROOM, PriceList.FAIR.cost());
-		this.facilityPrices.put(Facilities.GENERAL_FACILITES, PriceList.BUDGET.cost());
-	}
-	
-	private double getSizeModifier()
-	{
-		if (this.size < 20) {
-			return PriceList.BUDGET.cost();
-		}
-		else if (this.size >= 20 && this.size < 30) {
-			return PriceList.CHEAP.cost();
-		}
-		else if (this.size >= 30 && this.size < 40)
-		{
-			return PriceList.FAIR.cost();
-		}
-		else if (this.size >= 40 && this.size < 50)
-		{
-			return PriceList.EXPENSIVE.cost();
-		}
-		else
-		{
-			return PriceList.VERY_EXPENSIVE.cost();
-		}
-	}
-	
-	private double calculateBedToRoomRation()
+	private double calculateBedToRoomRatio()
 	{
 		int rooms = this.getNumberOfBeds().length;
 		int beds = this.calculateNumberOfBeds(this.numberOfBeds);
