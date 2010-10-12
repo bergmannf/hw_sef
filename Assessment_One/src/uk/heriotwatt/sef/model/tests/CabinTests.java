@@ -49,10 +49,8 @@ public class CabinTests {
 	@Test
 	public void testCostForFacilites()
 	{
-		cabin.setFacilities(Facilities.EN_SUITE);
-		double result = cabin.getCost();
-		double expResult = 10.0 + PriceList.VERY_EXPENSIVE.cost();
-		Assert.assertEquals(expResult, result, 0.0);
+		// TODO
+		Assert.fail();
 	}
 
 }
