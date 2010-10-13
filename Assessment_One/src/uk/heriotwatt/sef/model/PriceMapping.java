@@ -4,14 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Class to seperate the pricing concerns from information of the cabin.
+ * Class to seperate the pricing mapping from the information of the cabin.
  * 
  * @author florian
  *
  */
-public class PriceManager {
+public class PriceMapping {
 	
-	public final int BED_TO_ROOM_RATIO_MULTIPLIER;
 	private Map<Condition, Double> conditionPrices;
 	private Map<Facilities, Double> facilityPrices;
 
@@ -23,14 +22,21 @@ public class PriceManager {
 		return facilityPrices;
 	}
 
-	public int getBED_TO_ROOM_RATIO_MULTIPLIER() {
-		return BED_TO_ROOM_RATIO_MULTIPLIER;
-	}
-
-	public PriceManager(int bED_TO_ROOM_RATIO_MULTIPLIER) {
-		BED_TO_ROOM_RATIO_MULTIPLIER = bED_TO_ROOM_RATIO_MULTIPLIER;
+	public PriceMapping(int bED_TO_ROOM_RATIO_MULTIPLIER) {
 		this.initializeConditionPriceMapping();
 		this.initializeFacilityPriceMapping();
+	}
+	
+	/*
+	 * Getters and setters
+	 */
+	
+	public double getFacilityPrice(Facilities facilities) {
+		return facilityPrices.get(facilities);
+	}
+
+	public double getConditionPrice(Condition condition) {
+		return conditionPrices.get(condition);
 	}
 	
 	/**
@@ -83,13 +89,5 @@ public class PriceManager {
 		{
 			return PriceList.VERY_EXPENSIVE.cost();
 		}
-	}
-
-	public double getFacilityPrice(Facilities facilities) {
-		return facilityPrices.get(facilities);
-	}
-
-	public double getConditionPrice(Condition condition) {
-		return conditionPrices.get(condition);
 	}
 }

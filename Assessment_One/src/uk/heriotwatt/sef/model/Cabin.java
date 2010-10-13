@@ -17,14 +17,20 @@ public class Cabin {
 	public Name owner;
 	public Date buildDate;
 	public Condition condition;
-	
-	private final double MINIMUM_COST = 10;
-	
-	private PriceManager data = new PriceManager(5);
 
-	public Cabin()
-	{
+	private final int MINIMUM_NUMBER_OF_BEDS = 2;
+	private final int MAXIMUM_NUMBER_OF_BEDS = 8;
+	private final double MINIMUM_COST = 10;
+	public final int BED_TO_ROOM_RATIO_MULTIPLIER = 5;
+
+	private PriceMapping data;
+
+	public Cabin() {
 	}
+
+	/*
+	 * Getters and setters
+	 */
 
 	public int getCabinNumber() {
 		return cabinNumber;
@@ -41,10 +47,14 @@ public class Cabin {
 	public void setNumberOfBeds(int[] numberOfBeds) {
 		if (numberOfBeds.length > 0) {
 			int bedsInArray = this.calculateNumberOfBeds(numberOfBeds);
-			if (bedsInArray > 1 && bedsInArray < 9) {
+			if (bedsInArray >= MINIMUM_NUMBER_OF_BEDS
+					&& bedsInArray <= MAXIMUM_NUMBER_OF_BEDS) {
 				this.numberOfBeds = numberOfBeds;
 			} else {
-				throw new IllegalArgumentException("Only between 2 and 8 beds can be placed in a cabin.");
+				throw new IllegalArgumentException(
+						String.format(
+								"Only between %d and %d beds can be placed in a cabin.",
+								MINIMUM_NUMBER_OF_BEDS, MAXIMUM_NUMBER_OF_BEDS));
 			}
 		} else {
 			throw new IllegalArgumentException(
@@ -73,37 +83,58 @@ public class Cabin {
 	}
 
 	public void setSize(double size) {
-		if (size >=0 ) {
+		if (size >= 0) {
 			this.size = size;
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Size must be positive.");
 		}
 	}
 
 	public double getCost() {
 		double minimalCost = MINIMUM_COST;
-		
+
 		double conditionModifier = this.data.getConditionPrice(this.condition);
 		double faciltiesModifier = this.data.getFacilityPrice(this.facilities);
 		double sizeModifier = this.data.getSizeModifier(this.size);
 		double bedToRoomRatio = this.calculateBedToRoomRatio();
-		
-		minimalCost = minimalCost + conditionModifier + faciltiesModifier + sizeModifier + (data.BED_TO_ROOM_RATIO_MULTIPLIER * bedToRoomRatio);
-		
+
+		minimalCost = minimalCost + conditionModifier + faciltiesModifier
+				+ sizeModifier
+				+ (BED_TO_ROOM_RATIO_MULTIPLIER * bedToRoomRatio);
+
 		return minimalCost;
 	}
 
-	private int calculateNumberOfBeds(int[] numberOfBeds2) {
+	public Date getBuildDate() {
+		return buildDate;
+	}
+
+	public void setBuildDate(Date buildDate) {
+		this.buildDate = buildDate;
+	}
+
+	public Condition getCondition() {
+		return condition;
+	}
+
+	public void setCondition(Condition condition) {
+		this.condition = condition;
+	}
+	
+	public int getBeds()
+	{
+		return this.calculateNumberOfBeds(this.numberOfBeds);
+	}
+
+	private int calculateNumberOfBeds(int[] numberOfBeds) {
 		int result = 0;
-		for (int i : numberOfBeds2) {
+		for (int i : numberOfBeds) {
 			result += i;
 		}
 		return result;
 	}
-	
-	private double calculateBedToRoomRatio()
-	{
+
+	public double calculateBedToRoomRatio() {
 		int rooms = this.getNumberOfBeds().length;
 		int beds = this.calculateNumberOfBeds(this.numberOfBeds);
 		double bedToRoomRatio = beds / rooms;
