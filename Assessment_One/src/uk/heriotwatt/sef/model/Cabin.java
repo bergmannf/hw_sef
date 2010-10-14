@@ -16,6 +16,7 @@ public class Cabin {
 	public Facilities facilities;
 	public Name owner;
 	public Date buildDate;
+
 	public Condition condition;
 
 	private final int MINIMUM_NUMBER_OF_BEDS = 2;
@@ -26,6 +27,19 @@ public class Cabin {
 	private PriceMapping data;
 
 	public Cabin() {
+	}
+	
+	public Cabin(int cabinNumber, int[] numberOfBeds, double size,
+			Facilities facilities, Name owner, Date buildDate,
+			Condition condition) {
+		super();
+		this.cabinNumber = cabinNumber;
+		this.numberOfBeds = numberOfBeds;
+		this.size = size;
+		this.facilities = facilities;
+		this.owner = owner;
+		this.buildDate = buildDate;
+		this.condition = condition;
 	}
 
 	/*

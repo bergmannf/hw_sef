@@ -45,4 +45,9 @@ public class Name {
 	public String getInitPeriodLast() {
 		return firstName.charAt(0) + ". " + lastName;
 	}
+	
+	public String getInitials()
+	{
+		return firstName.charAt(0) + ". " + lastName.charAt(0) + ".";
+	}
 }

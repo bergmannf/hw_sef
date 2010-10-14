@@ -1,6 +1,7 @@
 package uk.heriotwatt.sef.model;
 
 public class CabinNotFoundException extends Exception {
+	
 	/**
 	 * Generated serialVersionUID to allow serialisation.
 	 */
