@@ -9,9 +9,12 @@ import java.util.Locale;
 public class CabinManager {
 
 	private List<Cabin> cabins;
+	
+	private CabinFileHandler cfh;
 
 	public CabinManager() {
 		this.cabins = new ArrayList<Cabin>();
+		cfh = new CabinFileHandler("./Cabins.csv", "./CabinReports.txt");
 	}
 
 	public void addCabin(Cabin cab) {
@@ -135,33 +138,55 @@ public class CabinManager {
 	}
 
 	public void printAllCabins() {
+		StringBuilder sb = getAllCabinDetails();
+		System.out.println(sb.toString());
+	}
+	
+	public void printReportsToFile()
+	{
+		String printString = "";
+		StringBuilder sb = getAllCabinDetails();
+		printString = sb.toString();
+		for (Cabin cab : this.cabins) {
+			StringBuilder db = this.getCabinDetails(cab);
+			printString += db.toString();
+		}
+		cfh.writeToFile(printString);
+	}
+
+	private StringBuilder getAllCabinDetails() {
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.UK);
-		formatter.format("%1$10s | %2$10s | %3$10s | %4$5s %n", "NUMBER",
+		formatter.format("%1$10s | %2$10s | %3$20s | %4$5s %n", "NUMBER",
 				"OWNER", "FACILITIES", "BEDS");
 		for (Cabin cab : this.cabins) {
 			// TODO Return the initials of the owner.
-			formatter.format("%1$10d | %2$10s | %3$10s | %4$5d %n",
+			formatter.format("%1$10d | %2$10s | %3$20s | %4$5d %n",
 					cab.getCabinNumber(), cab.getOwner().getInitials(), cab
 							.getFacilities().toString().toLowerCase(),
 					cab.getBeds());
 		}
-		System.out.println(sb.toString());
+		return sb;
 	}
 
 	public void printCabDetails(Cabin cab) {
+		StringBuilder sb = getCabinDetails(cab);
+		System.out.println(sb.toString());
+	}
+
+	private StringBuilder getCabinDetails(Cabin cab) {
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.UK);
 		formatter.format(
-				"%1$10s | %2$15s | %3$10s | %4$15s | %5$5s | %6$5s %n",
-				"NUMBER", "OWNER", "FACILITIES", "CONDITION", "BEDS", "ROOMS");
+				"%1$10s | %2$15s | %3$20s | %4$15s | %5$5s | %6$5s | %7$5s %n",
+				"NUMBER", "OWNER", "FACILITIES", "CONDITION", "BEDS", "ROOMS", "COST");
 		formatter.format(
-				"%1$10d | %2$15s | %3$10s | %4$15s | %5$5d | %6$5d %n",
+				"%1$10d | %2$15s | %3$20s | %4$15s | %5$5d | %6$5d | %7$5.2f %n",
 				cab.getCabinNumber(), cab.getOwner().getFirstAndLastName(), cab
 						.getFacilities().toString().toLowerCase(), cab
-						.getCondition().toString().toLowerCase(),
-				cab.getBeds(), cab.getNumberOfBeds().length);
-		System.out.println(sb.toString());
+						.getCondition().toString().toLowerCase(), 
+				cab.getBeds(), cab.getNumberOfBeds().length, cab.getCost());
+		return sb;
 	}
 
 }

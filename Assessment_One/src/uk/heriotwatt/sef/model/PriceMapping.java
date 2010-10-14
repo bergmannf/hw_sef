@@ -13,6 +13,11 @@ public class PriceMapping {
 	
 	private Map<Condition, Double> conditionPrices;
 	private Map<Facilities, Double> facilityPrices;
+	
+	public PriceMapping() {
+		this.initializeConditionPriceMapping();
+		this.initializeFacilityPriceMapping();
+	}
 
 	public Map<Condition, Double> getConditionPrices() {
 		return conditionPrices;
@@ -22,11 +27,6 @@ public class PriceMapping {
 		return facilityPrices;
 	}
 
-	public PriceMapping(int bED_TO_ROOM_RATIO_MULTIPLIER) {
-		this.initializeConditionPriceMapping();
-		this.initializeFacilityPriceMapping();
-	}
-	
 	/*
 	 * Getters and setters
 	 */

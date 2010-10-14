@@ -27,6 +27,7 @@ public class Cabin {
 	private PriceMapping data;
 
 	public Cabin() {
+		this.data = new PriceMapping();
 	}
 	
 	public Cabin(int cabinNumber, int[] numberOfBeds, double size,
@@ -40,6 +41,7 @@ public class Cabin {
 		this.owner = owner;
 		this.buildDate = buildDate;
 		this.condition = condition;
+		this.data = new PriceMapping();
 	}
 
 	/*
@@ -105,18 +107,18 @@ public class Cabin {
 	}
 
 	public double getCost() {
-		double minimalCost = MINIMUM_COST;
+		double cost = MINIMUM_COST;
 
 		double conditionModifier = this.data.getConditionPrice(this.condition);
 		double faciltiesModifier = this.data.getFacilityPrice(this.facilities);
 		double sizeModifier = this.data.getSizeModifier(this.size);
 		double bedToRoomRatio = this.calculateBedToRoomRatio();
 
-		minimalCost = minimalCost + conditionModifier + faciltiesModifier
+		cost = MINIMUM_COST + conditionModifier + faciltiesModifier
 				+ sizeModifier
 				+ (BED_TO_ROOM_RATIO_MULTIPLIER * bedToRoomRatio);
 
-		return minimalCost;
+		return cost;
 	}
 
 	public Date getBuildDate() {

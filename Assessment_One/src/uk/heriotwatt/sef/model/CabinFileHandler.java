@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -12,40 +13,50 @@ import java.util.Scanner;
 
 public class CabinFileHandler {
 	
-	private String pathToFile;
+	private String pathToReadFile;
+	private String pathToReportFile;
 	
-	public CabinFileHandler(String path)
+	public CabinFileHandler(String pathReadFile, String pathWriteFile)
 	{
-		this.pathToFile = path;
+		this.pathToReadFile = pathReadFile;
+		this.pathToReportFile = pathWriteFile;
 	}
 	
-	public void writeToFile()
+	public void writeToFile(String sb)
 	{
-		
+		try {
+			File file = new File(pathToReportFile);
+			PrintWriter pw = new PrintWriter(file);
+			pw.write(sb);
+			pw.flush();
+			pw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Cabin> readFromFile()
 	{
 		List<Cabin> cabinList = new LinkedList<Cabin>();
 		try {
-			File file = new File(this.pathToFile);
+			File file = new File(this.pathToReadFile);
 			Scanner scanner = new Scanner(file);
 			while (scanner.hasNext()) {
 				String nextLine = scanner.nextLine();
 				Cabin cabin = this.createCabin(nextLine);
 				cabinList.add(cabin);
 			}
-			return cabinList;
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return cabinList;
 	}
 
 	private Cabin createCabin(String nextLine) {
-		Cabin cabin;
+		Cabin cabin = null;
 		try {
 			String[] splitList = nextLine.split(",");
 			int cabinNumber = Integer.parseInt(splitList[0]);
@@ -58,11 +69,11 @@ public class CabinFileHandler {
 			for (int i = 8; i < splitList.length; i++) {
 				beds[i-8] = Integer.parseInt(splitList[i]);
 			}
-			Cabin cabin = new Cabin(cabinNumber, beds, size, facilities, name, buildDate, condition);
-			return cabin;
+			cabin = new Cabin(cabinNumber, beds, size, facilities, name, buildDate, condition);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return cabin;
 	}
 
 }
