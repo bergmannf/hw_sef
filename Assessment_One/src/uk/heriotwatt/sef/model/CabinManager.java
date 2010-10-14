@@ -1,7 +1,6 @@
 package uk.heriotwatt.sef.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Locale;
@@ -15,6 +14,7 @@ public class CabinManager {
 	public CabinManager() {
 		this.cabins = new ArrayList<Cabin>();
 		cfh = new CabinFileHandler("./Cabins.csv", "./CabinReports.txt");
+		this.cfh.readFromFile();
 	}
 
 	public void addCabin(Cabin cab) {

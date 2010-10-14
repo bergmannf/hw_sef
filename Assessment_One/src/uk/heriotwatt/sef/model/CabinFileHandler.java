@@ -2,10 +2,8 @@ package uk.heriotwatt.sef.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,14 +35,20 @@ public class CabinFileHandler {
 	
 	public List<Cabin> readFromFile()
 	{
+		// TODO Ignore the comments in a file. (Denoted by #)
 		List<Cabin> cabinList = new LinkedList<Cabin>();
 		try {
 			File file = new File(this.pathToReadFile);
 			Scanner scanner = new Scanner(file);
 			while (scanner.hasNext()) {
 				String nextLine = scanner.nextLine();
-				Cabin cabin = this.createCabin(nextLine);
-				cabinList.add(cabin);
+				if (nextLine.trim().startsWith("#")) {
+					 System.out.println("Ignoring a commented out line.");
+				}
+				else {
+					Cabin cabin = this.createCabin(nextLine);
+					cabinList.add(cabin);
+				}
 			}
 		} catch (FileNotFoundException e)
 		{
