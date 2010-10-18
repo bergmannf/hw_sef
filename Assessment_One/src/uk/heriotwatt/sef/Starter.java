@@ -1,6 +1,5 @@
 package uk.heriotwatt.sef;
 
-import java.util.Date;
 
 import uk.heriotwatt.sef.model.Cabin;
 import uk.heriotwatt.sef.model.CabinManager;
@@ -25,7 +24,7 @@ public class Starter {
 		cab1.setCondition(Condition.IN_SHAMBLES);
 		cab1.setSize(35.0);
 		
-		Cabin cab2 = new Cabin(2, new int[] {2,2,2}, 50.0, Facilities.SEPERATE_BATHROOM, new Name("John", "Sly","Rambo"), new Date(), Condition.PERFECT);
+		Cabin cab2 = new Cabin(2, new int[] {2,2,2}, 50.0, Facilities.SEPERATE_BATHROOM, new Name("John", "Sly","Rambo"), Condition.PERFECT);
 		
 		cabMan.addCabin(cab1);
 		cabMan.addCabin(cab2);

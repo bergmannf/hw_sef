@@ -1,7 +1,5 @@
 package uk.heriotwatt.sef.model;
 
-import java.util.Date;
-
 /**
  * Stores values associated with a cabin.
  * 
@@ -15,8 +13,6 @@ public class Cabin {
 	public double size;
 	public Facilities facilities;
 	public Name owner;
-	public Date buildDate;
-
 	public Condition condition;
 
 	private final int MINIMUM_NUMBER_OF_BEDS = 2;
@@ -31,15 +27,13 @@ public class Cabin {
 	}
 	
 	public Cabin(int cabinNumber, int[] numberOfBeds, double size,
-			Facilities facilities, Name owner, Date buildDate,
-			Condition condition) {
+			Facilities facilities, Name owner, Condition condition) {
 		super();
 		this.cabinNumber = cabinNumber;
 		this.numberOfBeds = numberOfBeds;
 		this.size = size;
 		this.facilities = facilities;
 		this.owner = owner;
-		this.buildDate = buildDate;
 		this.condition = condition;
 		this.data = new PriceMapping();
 	}
@@ -119,14 +113,6 @@ public class Cabin {
 				+ (BED_TO_ROOM_RATIO_MULTIPLIER * bedToRoomRatio);
 
 		return cost;
-	}
-
-	public Date getBuildDate() {
-		return buildDate;
-	}
-
-	public void setBuildDate(Date buildDate) {
-		this.buildDate = buildDate;
 	}
 
 	public Condition getCondition() {

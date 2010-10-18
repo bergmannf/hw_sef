@@ -22,7 +22,12 @@ public class CabinManager {
 	}
 
 	public Cabin getCabinAtIndex(int index) {
-		return this.cabins.get(index);
+		if (index < this.getNumberOfCabins()) {
+			return this.cabins.get(index);
+		}
+		else {
+			throw new IndexOutOfBoundsException();
+		}
 	}
 
 	/**
@@ -80,7 +85,7 @@ public class CabinManager {
 				if (cheapestCab == null) {
 					cheapestCab = cab;
 				}
-				if (cab.getCost() < cheapestCab.getCabinNumber()) {
+				if (cab.getCost() < cheapestCab.getCost()) {
 					cheapestCab = cab;
 				}
 			}
@@ -105,7 +110,7 @@ public class CabinManager {
 				if (expensiveCab == null) {
 					expensiveCab = cab;
 				}
-				if (cab.getCost() > expensiveCab.getCabinNumber()) {
+				if (cab.getCost() > expensiveCab.getCost()) {
 					expensiveCab = cab;
 				}
 			}

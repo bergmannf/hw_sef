@@ -73,7 +73,7 @@ public class CabinFileHandler {
 			for (int i = 8; i < splitList.length; i++) {
 				beds[i-8] = Integer.parseInt(splitList[i]);
 			}
-			cabin = new Cabin(cabinNumber, beds, size, facilities, name, buildDate, condition);
+			cabin = new Cabin(cabinNumber, beds, size, facilities, name, condition);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
