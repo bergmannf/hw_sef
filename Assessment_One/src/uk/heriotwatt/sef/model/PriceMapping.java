@@ -69,7 +69,7 @@ public class PriceMapping {
 	 * @param size The size of the cabin.
 	 * @return The size modifier according to the provided size of a room.
 	 */
-	double getSizeModifier(double size)
+	public double getSizeModifier(double size)
 	{
 		if (size < 20) {
 			return PriceList.BUDGET.cost();

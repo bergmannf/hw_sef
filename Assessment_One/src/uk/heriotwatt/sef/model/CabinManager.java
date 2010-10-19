@@ -156,6 +156,7 @@ public class CabinManager {
 			StringBuilder db = this.getCabinDetails(cab);
 			printString += db.toString();
 		}
+		printString += this.getConditionReportPrint().toString();
 		cfh.writeToFile(printString);
 	}
 
@@ -177,6 +178,50 @@ public class CabinManager {
 	public void printCabDetails(Cabin cab) {
 		StringBuilder sb = getCabinDetails(cab);
 		System.out.println(sb.toString());
+	}
+	
+	public StringBuilder getConditionReportPrint()
+	{
+		int[] conRep = getConditionReport();
+		StringBuilder sb = new StringBuilder();
+		Formatter formatter = new Formatter(sb, Locale.UK);
+		formatter.format("%1$15s | %2$15s | %3$15s | %4$15s | %5$15s %n", Condition.BAD.toString(),
+				Condition.FAIR.toString(), Condition.GOOD.toString(), Condition.IN_SHAMBLES.toString(),
+				Condition.PERFECT.toString(), Condition.UNKNOWN.toString());
+		formatter.format("%1$15d | %2$15d | %3$15d | %4$15d | %5$15d %n", conRep[0], conRep[1],
+				conRep[2], conRep[3], conRep[4], conRep[5]);
+		return sb;
+	}
+	
+	public int[] getConditionReport()
+	{
+		int size = Condition.values().length;
+		int[] frequencyOfConditions = new int[size];
+		for (Cabin cabin : this.cabins) {
+			switch (cabin.condition) {
+			case BAD:
+				frequencyOfConditions[0]++;
+				break;
+			case FAIR:
+				frequencyOfConditions[1]++;
+				break;
+			case GOOD:
+				frequencyOfConditions[2]++;
+				break;
+			case IN_SHAMBLES:
+				frequencyOfConditions[3]++;
+				break;
+			case PERFECT:
+				frequencyOfConditions[4]++;
+				break;
+			case UNKNOWN:
+				frequencyOfConditions[5]++;
+				break;
+			default:
+				break;
+			}
+		}
+		return frequencyOfConditions;
 	}
 
 	private StringBuilder getCabinDetails(Cabin cab) {
