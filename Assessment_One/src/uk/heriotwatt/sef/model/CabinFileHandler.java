@@ -59,7 +59,7 @@ public class CabinFileHandler {
 		return cabinList;
 	}
 
-	private Cabin createCabin(String nextLine) {
+	public Cabin createCabin(String nextLine) {
 		Cabin cabin = null;
 		try {
 			String[] splitList = nextLine.split(",");
@@ -68,13 +68,18 @@ public class CabinFileHandler {
 			Facilities facilities = Facilities.valueOf(splitList[2]);
 			Condition condition = Condition.valueOf(splitList[3]);
 			Name name = new Name(splitList[4], splitList[5], splitList[6]);
-			Date buildDate = new Date(splitList[7]);
-			int[] beds = new int[splitList.length - 8];
-			for (int i = 8; i < splitList.length; i++) {
-				beds[i-8] = Integer.parseInt(splitList[i]);
+			int[] beds = new int[splitList.length - 7];
+			for (int i = 7; i < splitList.length; i++) {
+				beds[i-7] = Integer.parseInt(splitList[i]);
 			}
 			cabin = new Cabin(cabinNumber, beds, size, facilities, name, condition);
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
+			System.out.println("There was an error when parsing a number!");
+			e.printStackTrace();
+		}
+		catch (IllegalArgumentException e)
+		{
+			System.out.println("A provided argument was not the expected type.");
 			e.printStackTrace();
 		}
 		return cabin;

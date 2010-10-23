@@ -17,7 +17,7 @@ public class Cabin {
 
 	private final int MINIMUM_NUMBER_OF_BEDS = 2;
 	private final int MAXIMUM_NUMBER_OF_BEDS = 8;
-	private final double MINIMUM_COST = 10;
+	private final double BASIC_COST = 10;
 	public final int BED_TO_ROOM_RATIO_MULTIPLIER = 5;
 
 	private PriceMapping data;
@@ -101,14 +101,14 @@ public class Cabin {
 	}
 
 	public double getCost() {
-		double cost = MINIMUM_COST;
+		double cost = BASIC_COST;
 
 		double conditionModifier = this.data.getConditionPrice(this.condition);
 		double faciltiesModifier = this.data.getFacilityPrice(this.facilities);
 		double sizeModifier = this.data.getSizeModifier(this.size);
 		double bedToRoomRatio = this.calculateBedToRoomRatio();
 
-		cost = MINIMUM_COST + conditionModifier + faciltiesModifier
+		cost = BASIC_COST + conditionModifier + faciltiesModifier
 				+ sizeModifier
 				+ (BED_TO_ROOM_RATIO_MULTIPLIER * bedToRoomRatio);
 

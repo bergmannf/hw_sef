@@ -1,6 +1,7 @@
 #
 # Format:
 #
-# CabinNumber, Size, Facilities, Condition, Forename, Middlename, Surname, Date, BedsRoom1, BedsRoom2, ..., [BedsRoomN]
+# CabinNumber,Size,Facilities,Condition,Forename,Middlename,Surname,BedsRoom1,BedsRoom2,...,[BedsRoomN]
 #
 #
+1,10,EN_SUITE,IN_SHAMBLES,John,Jack,MasterMind,2,2,2,2

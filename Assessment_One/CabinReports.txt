@@ -1,0 +1,7 @@
+    NUMBER |      OWNER |           FACILITIES |  BEDS 
+         1 |      J. A. |             en_suite |     4 
+         2 |      J. R. |    seperate_bathroom |     6 
+    NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  COST 
+         1 |       Jim Azard |             en_suite |     in_shambles |     4 |     2 | 36.00 
+    NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  COST 
+         2 |      John Rambo |    seperate_bathroom |         perfect |     6 |     3 | 45.00 

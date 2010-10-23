@@ -24,7 +24,7 @@ import uk.heriotwatt.sef.model.NoCabinsException;
  * @author Florian Bergmann
  *
  */
-public class CabinManagerTest {
+public class CabinManagerTests {
 
 	private CabinManager cabMan;
 	private Cabin mockin;

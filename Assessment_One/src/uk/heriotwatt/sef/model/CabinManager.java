@@ -130,6 +130,10 @@ public class CabinManager {
 		return this.cabins.size();
 	}
 
+	/**
+	 * Prints the details of a specific cabin that is specified by its cabin number.
+	 * @param cabinNumber The cabinnumber of the cabin whose details should be printed.
+	 */
 	public void printDetailsForCabinNumber(int cabinNumber) {
 		try {
 			Cabin cab = this.findCabinByCabinNumber(cabinNumber);
@@ -142,11 +146,17 @@ public class CabinManager {
 		}
 	}
 
+	/**
+	 * Prints the details for all cabins to the standard output.
+	 */
 	public void printAllCabins() {
 		StringBuilder sb = getAllCabinDetails();
 		System.out.println(sb.toString());
 	}
 	
+	/**
+	 * Acquires all information from the reports and prints the to a file.
+	 */
 	public void printReportsToFile()
 	{
 		String printString = "";
@@ -159,6 +169,10 @@ public class CabinManager {
 		cfh.writeToFile(printString);
 	}
 
+	/**
+	 * Returns the details about all cabins
+	 * @return A stringbuilder with formatted output.
+	 */
 	private StringBuilder getAllCabinDetails() {
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.UK);
@@ -174,11 +188,20 @@ public class CabinManager {
 		return sb;
 	}
 
+	/**
+	 * Prints the details of one cabin.
+	 * @param cab The cabin which details should be printed. 
+	 */
 	public void printCabDetails(Cabin cab) {
 		StringBuilder sb = getCabinDetails(cab);
 		System.out.println(sb.toString());
 	}
 
+	/**
+	 * Returns the details of one cabin.
+	 * @param cab The cabin which details should be returned
+	 * @return A stringbuilder with formatted output.
+	 */
 	private StringBuilder getCabinDetails(Cabin cab) {
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.UK);
