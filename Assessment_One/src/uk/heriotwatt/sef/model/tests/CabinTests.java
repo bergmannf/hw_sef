@@ -6,6 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import uk.heriotwatt.sef.model.Cabin;
+import uk.heriotwatt.sef.model.Condition;
+import uk.heriotwatt.sef.model.Facilities;
+import uk.heriotwatt.sef.model.Name;
+import uk.heriotwatt.sef.model.PriceMapping;
 
 public class CabinTests {
 	
@@ -47,8 +51,25 @@ public class CabinTests {
 	@Test
 	public void testCostForFacilites()
 	{
-		// TODO
-		Assert.fail();
+		PriceMapping pm = new PriceMapping();
+		
+		Facilities fac = Facilities.EN_SUITE;
+		Condition con = Condition.FAIR;
+		int[] beds = new int[] {2,2};
+		double size = 49.99;
+		
+		double basePrice = 10;
+		double conPrice = pm.getConditionPrice(con);
+		double facPrice = pm.getFacilityPrice(fac);
+		double sizePrice = pm.getSizeModifier(size);
+		
+		double expectedPrice = basePrice + conPrice + facPrice + sizePrice + 5 * (2/4);
+		
+		Cabin cab = new Cabin(1, beds,size, fac, new Name("Ho", "ho", "ho"), con);
+		
+		double price = cab.getCost();
+		
+		Assert.assertEquals(expectedPrice, price, 0);
 	}
 
 }
