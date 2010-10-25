@@ -8,29 +8,39 @@ package uk.heriotwatt.sef.model;
  */
 public class Cabin {
 
-	public int cabinNumber;
-	public int[] beds;
-	public double size;
-	public Facilities facilities;
-	public Name owner;
-	public Condition condition;
+	private int cabinNumber;
+	private int[] beds;
+	private double size;
+	private Facilities facilities;
+	private Name owner;
+	private Condition condition;
+	
+	private PriceMapping data;
 
 	private final int MINIMUM_NUMBER_OF_BEDS = 2;
 	private final int MAXIMUM_NUMBER_OF_BEDS = 8;
 	private final double BASIC_COST = 10;
-	public final int BED_TO_ROOM_RATIO_MULTIPLIER = 5;
-
-	private PriceMapping data;
+	private final int BED_TO_ROOM_RATIO_MULTIPLIER = 5;
 
 	public Cabin() {
 		this.data = new PriceMapping();
 	}
 	
-	public Cabin(int cabinNumber, int[] numberOfBeds, double size,
+	/**
+	 * Creates a new cabin object with the specified values.
+	 * 
+	 * @param cabinNumber The cabin number.
+	 * @param beds The array of beds in the cabin..
+	 * @param size The size of the cabin.
+	 * @param facilities The facilites of the cabin.
+	 * @param owner The owner of the cabin.
+	 * @param condition The condition of the cabin.
+	 */
+	public Cabin(int cabinNumber, int[] beds, double size,
 			Facilities facilities, Name owner, Condition condition) {
 		super();
 		this.cabinNumber = cabinNumber;
-		this.beds = numberOfBeds;
+		this.beds = beds;
 		this.size = size;
 		this.facilities = facilities;
 		this.owner = owner;

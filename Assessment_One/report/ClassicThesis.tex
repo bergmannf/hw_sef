@@ -54,18 +54,19 @@
 % ********************************************************************
 % Re-usable information
 % ********************************************************************
-\newcommand{\myTitle}{A Classic Thesis Style\xspace}
-\newcommand{\myDegree}{An Homage to The Elements of Typographic Style\xspace}
-\newcommand{\myName}{Andr\'e Miede\xspace}
-\newcommand{\myProf}{Put name here\xspace}
-\newcommand{\myOtherProf}{Put name here\xspace}
-\newcommand{\mySupervisor}{Put name here\xspace}
-\newcommand{\myFaculty}{Put data here\xspace}
-\newcommand{\myDepartment}{Put data here\xspace}
-\newcommand{\myUni}{\protect{Put data here}\xspace}
-\newcommand{\myLocation}{Darmstadt\xspace}
-\newcommand{\myTime}{May 2010\xspace}
-\newcommand{\myVersion}{Version 2.8\xspace}
+\newcommand{\myTitle}{Software Engineering Foundations\xspace}
+\newcommand{\myDegree}{Assessment One: Cabin Manager\xspace}
+\newcommand{\myName}{Florian Bergmann\xspace}
+\newcommand{\myProf}{\xspace}
+\newcommand{\myPersonId}{Person ID: H00020398}
+\newcommand{\myOtherProf}{\xspace}
+\newcommand{\mySupervisor}{\xspace}
+\newcommand{\myFaculty}{\xspace}
+\newcommand{\myDepartment}{\xspace}
+\newcommand{\myUni}{\protect{Heriot-Watt University}\xspace}
+\newcommand{\myLocation}{Edinburgh\xspace}
+\newcommand{\myTime}{\xspace}
+\newcommand{\myVersion}{\xspace}
 %*******************************************************
 % Packages with options that might require adjustments
 %*******************************************************
@@ -214,13 +215,7 @@
 %********************************************************************
 % Frontmatter
 %*******************************************************
-\include{FrontBackmatter/DirtyTitlepage}
 \include{FrontBackmatter/Titlepage}
-\include{FrontBackmatter/Titleback}
-\cleardoublepage\include{FrontBackmatter/Dedication}
-\cleardoublepage\include{FrontBackmatter/Abstract}
-\cleardoublepage\include{FrontBackmatter/Publication}
-\cleardoublepage\include{FrontBackmatter/Acknowledgments}
 \pagestyle{scrheadings}
 \cleardoublepage\include{FrontBackmatter/Contents}
 %********************************************************************
@@ -228,7 +223,7 @@
 %*******************************************************
 \pagenumbering{arabic}
 % use \cleardoublepage here to avoid problems with pdfbookmark
-\cleardoublepage\part{Creation of CabinManager}
+\cleardoublepage\part{Creation of a Cabin Manager}
 \include{Chapters/Chapter01}
 \include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore

@@ -4,4 +4,14 @@
 # CabinNumber,Size,Facilities,Condition,Forename,Middlename,Surname,BedsRoom1,BedsRoom2,...,[BedsRoomN]
 #
 #
-1,10,EN_SUITE,IN_SHAMBLES,John,Jack,MasterMind,2,2,2,2
+1,10,EN_SUITE,PERFECT,John,Rambo,Sly,1,1
+# Following are two faulty cabins.
+2,20,EN_SUTE,I_SHMBES,King,,Lear,2,3
+3,25,EN_SUITE,IN_SHMBLES,Bethad,Mac,Findlaich,2,4
+4,35,GENERAL_FACILITES,GOOD,Conchobar,Mac,Nessa,2,1,1
+5,45,EN_SUITE,FAIR,Sie,,Gurd,3
+6,55,GENERAL_FACILITES,IN_SHAMBLES,Uthuce,,Odysseus,2,3,1
+7,39,SEPERATE_BATHROOM,PERFECT,Perseus,,Nestor,2,2,2,2
+8,38,SEPERATE_BATHROOM,FAIR,Robert,Bruce,Cotton,2,1,1
+9,38.5,GENERAL_FACILITES,BAD,Beo,,Wulf,2,2
+10,27,EN_SUITE,GOOD,Grimur,,Jonsson,2,4,2

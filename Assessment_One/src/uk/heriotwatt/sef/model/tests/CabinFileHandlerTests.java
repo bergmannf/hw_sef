@@ -30,7 +30,7 @@ public class CabinFileHandlerTests {
 		Assert.assertNotNull(cabin);
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testCreateCabinFaultyValues()
 	{
 		String toParse = "1,10,EN_SITE,IN_SHAMBLES,John,Jack,MasterMind,2,2,2,2";

@@ -4,6 +4,9 @@
 package uk.heriotwatt.sef.model.tests;
 
 import static org.junit.Assert.*;
+
+import java.util.LinkedList;
+
 import junit.framework.Assert;
 
 import org.junit.After;
@@ -13,6 +16,7 @@ import org.junit.Test;
 import static org.mockito.Mockito.*;
 
 import uk.heriotwatt.sef.model.Cabin;
+import uk.heriotwatt.sef.model.CabinFileHandler;
 import uk.heriotwatt.sef.model.CabinManager;
 import uk.heriotwatt.sef.model.CabinNotFoundException;
 import uk.heriotwatt.sef.model.Condition;
@@ -35,7 +39,9 @@ public class CabinManagerTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		cabMan = new CabinManager();
+		CabinFileHandler mockHandler = mock(CabinFileHandler.class);
+		when(mockHandler.readFromFile()).thenReturn(new LinkedList());
+		cabMan = new CabinManager(mockHandler);
 		mockin = mock(Cabin.class);
 		mockin2 = mock(Cabin.class);
 	}

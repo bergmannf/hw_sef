@@ -13,7 +13,7 @@
 \defcounter {refsection}{0}
 \contentsline {lstlisting}{\numberline {3}uk.heriotwatt.sef.model.Condition.java}{17}{lstlisting.3}
 \defcounter {refsection}{0}
-\contentsline {lstlisting}{\numberline {4}uk.heriotwatt.sef.model.Facilities.java}{18}{lstlisting.4}
+\contentsline {lstlisting}{\numberline {4}uk.heriotwatt.sef.model.Facilities.java}{17}{lstlisting.4}
 \defcounter {refsection}{0}
 \contentsline {lstlisting}{\numberline {5}uk.heriotwatt.sef.model.PriceList.java}{18}{lstlisting.5}
 \defcounter {refsection}{0}
@@ -29,14 +29,14 @@
 \defcounter {refsection}{0}
 \addvspace {10\p@ }
 \defcounter {refsection}{0}
-\contentsline {lstlisting}{\numberline {11}Example output-file}{25}{lstlisting.11}
+\contentsline {lstlisting}{\numberline {11}Example output-file}{26}{lstlisting.11}
 \defcounter {refsection}{0}
 \addvspace {10\p@ }
 \defcounter {refsection}{0}
 \addvspace {10\p@ }
 \defcounter {refsection}{0}
-\contentsline {lstlisting}{\numberline {12}uk.heriotwatt.sef.model.tests.CabinFileHandlerTests.java}{29}{lstlisting.12}
+\contentsline {lstlisting}{\numberline {12}uk.heriotwatt.sef.model.tests.CabinFileHandlerTests.java}{30}{lstlisting.12}
 \defcounter {refsection}{0}
-\contentsline {lstlisting}{\numberline {13}uk.heriotwatt.sef.model.tests.CabinManagerTests.java}{30}{lstlisting.13}
+\contentsline {lstlisting}{\numberline {13}uk.heriotwatt.sef.model.tests.CabinManagerTests.java}{31}{lstlisting.13}
 \defcounter {refsection}{0}
-\contentsline {lstlisting}{\numberline {14}uk.heriotwatt.sef.model.tests.CabinTests.java}{33}{lstlisting.14}
+\contentsline {lstlisting}{\numberline {14}uk.heriotwatt.sef.model.tests.CabinTests.java}{34}{lstlisting.14}

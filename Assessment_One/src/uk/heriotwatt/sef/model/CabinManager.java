@@ -11,24 +11,16 @@ public class CabinManager {
 
 	private CabinFileHandler cfh;
 
-	public CabinManager() {
+	public CabinManager(CabinFileHandler cfh) {
 		this.cabins = new ArrayList<Cabin>();
-		cfh = new CabinFileHandler("./Cabins.csv", "./CabinReports.txt");
-		this.cfh.readFromFile();
+		this.cfh = cfh;
+		this.cabins = this.cfh.readFromFile();
 	}
 
 	public void addCabin(Cabin cab) {
 		this.cabins.add(cab);
 	}
-
-	public Cabin getCabinAtIndex(int index) {
-		if (index < this.getNumberOfCabins()) {
-			return this.cabins.get(index);
-		} else {
-			throw new IndexOutOfBoundsException();
-		}
-	}
-
+	
 	/**
 	 * Attempts to find a cabin with the provided cabinNumber in the cabin-List.
 	 * 
@@ -42,7 +34,7 @@ public class CabinManager {
 			throws CabinNotFoundException {
 		Cabin cabinFound = null;
 		for (Cabin cabin : this.cabins) {
-			if (cabin.cabinNumber == cabinNumber) {
+			if (cabin.getCabinNumber() == cabinNumber) {
 				cabinFound = cabin;
 				break;
 			}
@@ -53,6 +45,20 @@ public class CabinManager {
 			throw new CabinNotFoundException(String.format(
 					"The cabin with number %d was not in the list.",
 					cabinNumber));
+		}
+	}
+
+	/**
+	 * Retrieves that cabin at the specified position in the cabin list.
+	 * 
+	 * @param index The position for which the cabin should be returned.
+	 * @return Tha cabin.
+	 */
+	public Cabin getCabinAtIndex(int index) {
+		if (index < this.getNumberOfCabins()) {
+			return this.cabins.get(index);
+		} else {
+			throw new IndexOutOfBoundsException();
 		}
 	}
 
@@ -130,33 +136,6 @@ public class CabinManager {
 	}
 
 	/**
-	 * Prints the details of a specific cabin that is specified by its cabin
-	 * number.
-	 * 
-	 * @param cabinNumber
-	 *            The cabinnumber of the cabin whose details should be printed.
-	 */
-	public void printDetailsForCabinNumber(int cabinNumber) {
-		try {
-			Cabin cab = this.findCabinByCabinNumber(cabinNumber);
-			this.printCabDetails(cab);
-		} catch (CabinNotFoundException e) {
-			System.out
-					.println(String
-							.format("Could not find the cabin for number %d. No details printed.",
-									cabinNumber));
-		}
-	}
-
-	/**
-	 * Prints the details for all cabins to the standard output.
-	 */
-	public void printAllCabins() {
-		StringBuilder sb = getAllCabinDetails();
-		System.out.println(sb.toString());
-	}
-
-	/**
 	 * Acquires all information from the reports and prints the to a file.
 	 */
 	public void printReportsToFile() {
@@ -186,27 +165,6 @@ public class CabinManager {
 	}
 
 	/**
-	 * Returns the details about all cabins
-	 * 
-	 * @return A stringbuilder with formatted output.
-	 */
-	private StringBuilder getAllCabinDetails() {
-		StringBuilder sb = new StringBuilder();
-		Formatter formatter = new Formatter(sb, Locale.UK);
-		formatter.format("%1$10s | %2$10s | %3$20s | %4$5s %n", "NUMBER",
-				"OWNER", "FACILITIES", "BEDS");
-		for (Cabin cab : this.cabins) {
-			// TODO Return the initials of the owner.
-			formatter.format("%1$10d | %2$10s | %3$20s | %4$5d %n",
-					cab.getCabinNumber(), cab.getOwner().getInitials(), cab
-							.getFacilities().toString().toLowerCase(),
-					cab.getBeds());
-		}
-		formatter.format("%n");
-		return sb;
-	}
-
-	/**
 	 * Prints the details of one cabin.
 	 * 
 	 * @param cab
@@ -215,6 +173,33 @@ public class CabinManager {
 	public void printCabDetails(Cabin cab) {
 		StringBuilder sb = getCabinDetails(cab);
 		System.out.println(sb.toString());
+	}
+
+	/**
+	 * Prints the details for all cabins to the standard output.
+	 */
+	public void printAllCabins() {
+		StringBuilder sb = getAllCabinDetails();
+		System.out.println(sb.toString());
+	}
+
+	/**
+	 * Prints the details of a specific cabin that is specified by its cabin
+	 * number.
+	 * 
+	 * @param cabinNumber
+	 *            The cabinnumber of the cabin whose details should be printed.
+	 */
+	public void printDetailsForCabinNumber(int cabinNumber) {
+		try {
+			Cabin cab = this.findCabinByCabinNumber(cabinNumber);
+			this.printCabDetails(cab);
+		} catch (CabinNotFoundException e) {
+			System.out
+					.println(String
+							.format("Could not find the cabin for number %d. No details printed.",
+									cabinNumber));
+		}
 	}
 
 	/**
@@ -247,7 +232,7 @@ public class CabinManager {
 		int size = Condition.values().length;
 		int[] frequencyOfConditions = new int[size];
 		for (Cabin cabin : this.cabins) {
-			switch (cabin.condition) {
+			switch (cabin.getCondition()) {
 			case BAD:
 				frequencyOfConditions[0]++;
 				break;
@@ -283,19 +268,40 @@ public class CabinManager {
 	private StringBuilder getCabinDetails(Cabin cab) {
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.UK);
-		formatter.format(
-				"%1$10s | %2$15s | %3$20s | %4$15s | %5$5s | %6$5s | %7$5s %n",
-				"NUMBER", "OWNER", "FACILITIES", "CONDITION", "BEDS", "ROOMS",
-				"COST");
 		formatter
-				.format("%1$10d | %2$15s | %3$20s | %4$15s | %5$5d | %6$5d | %7$5.2f %n",
+				.format("%1$10s | %2$15s | %3$20s | %4$15s | %5$5s | %6$5s | %7$5s | %8$5s %n",
+						"NUMBER", "OWNER", "FACILITIES", "CONDITION", "BEDS",
+						"ROOMS", "SIZE", "COST");
+		formatter
+				.format("%1$10d | %2$15s | %3$20s | %4$15s | %5$5d | %6$5d | %7$5.2f | %8$5.2f %n",
 						cab.getCabinNumber(), cab.getOwner()
 								.getFirstAndLastName(), cab.getFacilities()
 								.toString().toLowerCase(), cab.getCondition()
 								.toString().toLowerCase(), cab.getBeds(), cab
-								.getNumberOfBeds().length, cab.getCost());
+								.getNumberOfBeds().length, cab.getSize(), cab
+								.getCost());
 		formatter.format("%n");
 		return sb;
 	}
 
+	/**
+	 * Returns the details about all cabins
+	 * 
+	 * @return A stringbuilder with formatted output.
+	 */
+	private StringBuilder getAllCabinDetails() {
+		StringBuilder sb = new StringBuilder();
+		Formatter formatter = new Formatter(sb, Locale.UK);
+		formatter.format("%1$10s | %2$10s | %3$20s | %4$5s %n", "NUMBER",
+				"OWNER", "FACILITIES", "BEDS");
+		for (Cabin cab : this.cabins) {
+			// TODO Return the initials of the owner.
+			formatter.format("%1$10d | %2$10s | %3$20s | %4$5d %n",
+					cab.getCabinNumber(), cab.getOwner().getInitials(), cab
+							.getFacilities().toString().toLowerCase(),
+					cab.getBeds());
+		}
+		formatter.format("%n");
+		return sb;
+	}
 }

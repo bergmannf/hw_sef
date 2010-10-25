@@ -42,8 +42,12 @@ public class CabinFileHandler {
 				if (nextLine.trim().startsWith("#")) {
 					System.out.println("Ignoring a commented out line.");
 				} else {
-					Cabin cabin = this.createCabin(nextLine);
-					cabinList.add(cabin);
+					try {
+						Cabin cabin = this.createCabin(nextLine);
+						cabinList.add(cabin);
+					} catch (IllegalArgumentException e) {
+						// TODO: handle exception
+					}
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -55,8 +59,8 @@ public class CabinFileHandler {
 	}
 
 	public Cabin createCabin(String nextLine) {
-		Cabin cabin = null;
 		try {
+			Cabin cabin = null;
 			String[] splitList = nextLine.split(",");
 			int cabinNumber = Integer.parseInt(splitList[0]);
 			double size = Double.parseDouble(splitList[1]);
@@ -69,15 +73,17 @@ public class CabinFileHandler {
 			}
 			cabin = new Cabin(cabinNumber, beds, size, facilities, name,
 					condition);
+			return cabin;
 		} catch (NumberFormatException e) {
 			System.out.println("There was an error when parsing a number!");
 			e.printStackTrace();
+			throw new IllegalArgumentException("Parsing failed.");
 		} catch (IllegalArgumentException e) {
 			System.out
 					.println("A provided argument was not the expected type.");
 			e.printStackTrace();
+			throw new IllegalArgumentException("Parsing failed.");
 		}
-		return cabin;
 	}
 
 }

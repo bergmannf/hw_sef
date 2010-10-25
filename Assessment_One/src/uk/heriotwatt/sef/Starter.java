@@ -1,6 +1,7 @@
 package uk.heriotwatt.sef;
 
 import uk.heriotwatt.sef.model.Cabin;
+import uk.heriotwatt.sef.model.CabinFileHandler;
 import uk.heriotwatt.sef.model.CabinManager;
 import uk.heriotwatt.sef.model.Condition;
 import uk.heriotwatt.sef.model.Facilities;
@@ -13,8 +14,10 @@ public class Starter {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		CabinManager cabMan = new CabinManager();
+		CabinFileHandler cfh = new CabinFileHandler("./Cabins.csv", "./CabinReports.txt");
+		CabinManager cabMan = new CabinManager(cfh);
 
+		/*
 		Cabin cab1 = new Cabin();
 		cab1.setOwner(new Name("Jim", "Hap", "Azard"));
 		cab1.setCabinNumber(1);
@@ -39,6 +42,7 @@ public class Starter {
 		cabMan.addCabin(cab2);
 		cabMan.addCabin(cab3);
 		cabMan.addCabin(cab4);
+		*/
 		cabMan.printAllCabins();
 
 		cabMan.printDetailsForCabinNumber(1);
