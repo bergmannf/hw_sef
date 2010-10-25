@@ -26,7 +26,6 @@ public class Cabin {
 		this.data = new PriceMapping();
 	}
 	
-	
 	public Cabin(int cabinNumber, int[] numberOfBeds, double size,
 			Facilities facilities, Name owner, Condition condition) {
 		super();
@@ -143,11 +142,11 @@ public class Cabin {
 	}
 
 	/**
-	 * The cost is calculated based on different conditions:
+	 * The cost is calculated based on different factors:
 	 * - The condition.
 	 * - The facilities.
 	 * - The size.
-	 * - The beds/rooms present.
+	 * - The beds/rooms present (The less beds per room the more expensive).
 	 * The values associated with the first three are stored in {@link PriceMapping}
 	 * 
 	 * @return The cost if the cabin.
@@ -158,7 +157,7 @@ public class Cabin {
 		double conditionModifier = this.data.getConditionPrice(this.condition);
 		double faciltiesModifier = this.data.getFacilityPrice(this.facilities);
 		double sizeModifier = this.data.getSizeModifier(this.size);
-		double bedToRoomRatio = this.calculateBedToRoomRatio();
+		double bedToRoomRatio = this.calculateRoomToBedRatio();
 
 		cost = BASIC_COST + conditionModifier + faciltiesModifier
 				+ sizeModifier
@@ -175,7 +174,7 @@ public class Cabin {
 	}
 
 	/**
-	 * Sets the condition.
+	 * Sets the condition of the cabin.
 	 * 
 	 * @param condition New condition to be set.
 	 */
@@ -184,7 +183,7 @@ public class Cabin {
 	}
 	
 	/**
-	 * @return The number of beds.
+	 * @return The number of beds in the cabin.
 	 */
 	public int getBeds()
 	{
@@ -192,15 +191,16 @@ public class Cabin {
 	}
 
 	/**
-	 * @return The bed to room ratio.
+	 * Calculates the room to bed ratio. 
+	 * @return The room to bed ratio.
 	 */
-	public double calculateBedToRoomRatio() {
+	public double calculateRoomToBedRatio() {
 		int rooms = this.getNumberOfBeds().length;
 		int beds = this.calculateNumberOfBeds(this.beds);
 		double bedToRoomRatio = rooms / beds;
 		return bedToRoomRatio;
 	}
-	
+		
 	private int calculateNumberOfBeds(int[] numberOfBeds) {
 		int result = 0;
 		for (int i : numberOfBeds) {

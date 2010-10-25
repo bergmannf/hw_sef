@@ -10,18 +10,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CabinFileHandler {
-	
+
 	private String pathToReadFile;
 	private String pathToReportFile;
-	
-	public CabinFileHandler(String pathReadFile, String pathWriteFile)
-	{
+
+	public CabinFileHandler(String pathReadFile, String pathWriteFile) {
 		this.pathToReadFile = pathReadFile;
 		this.pathToReportFile = pathWriteFile;
 	}
-	
-	public void writeToFile(String sb)
-	{
+
+	public void writeToFile(String sb) {
 		try {
 			File file = new File(pathToReportFile);
 			PrintWriter pw = new PrintWriter(file);
@@ -32,9 +30,8 @@ public class CabinFileHandler {
 			e.printStackTrace();
 		}
 	}
-	
-	public List<Cabin> readFromFile()
-	{
+
+	public List<Cabin> readFromFile() {
 		// TODO Ignore the comments in a file. (Denoted by #)
 		List<Cabin> cabinList = new LinkedList<Cabin>();
 		try {
@@ -43,15 +40,13 @@ public class CabinFileHandler {
 			while (scanner.hasNext()) {
 				String nextLine = scanner.nextLine();
 				if (nextLine.trim().startsWith("#")) {
-					 System.out.println("Ignoring a commented out line.");
-				}
-				else {
+					System.out.println("Ignoring a commented out line.");
+				} else {
 					Cabin cabin = this.createCabin(nextLine);
 					cabinList.add(cabin);
 				}
 			}
-		} catch (FileNotFoundException e)
-		{
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -70,16 +65,16 @@ public class CabinFileHandler {
 			Name name = new Name(splitList[4], splitList[5], splitList[6]);
 			int[] beds = new int[splitList.length - 7];
 			for (int i = 7; i < splitList.length; i++) {
-				beds[i-7] = Integer.parseInt(splitList[i]);
+				beds[i - 7] = Integer.parseInt(splitList[i]);
 			}
-			cabin = new Cabin(cabinNumber, beds, size, facilities, name, condition);
+			cabin = new Cabin(cabinNumber, beds, size, facilities, name,
+					condition);
 		} catch (NumberFormatException e) {
 			System.out.println("There was an error when parsing a number!");
 			e.printStackTrace();
-		}
-		catch (IllegalArgumentException e)
-		{
-			System.out.println("A provided argument was not the expected type.");
+		} catch (IllegalArgumentException e) {
+			System.out
+					.println("A provided argument was not the expected type.");
 			e.printStackTrace();
 		}
 		return cabin;

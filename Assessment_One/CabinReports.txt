@@ -1,7 +1,33 @@
+OVERVIEW OF CABIN DETAILS:
+
     NUMBER |      OWNER |           FACILITIES |  BEDS 
          1 |      J. A. |             en_suite |     4 
          2 |      J. R. |    seperate_bathroom |     6 
+         3 |      S. S. |    seperate_bathroom |     6 
+         4 |      T. M. |    general_facilites |     8 
+
+SINGLE CABIN INFORMATION: 
+
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  COST 
-         1 |       Jim Azard |             en_suite |     in_shambles |     4 |     2 | 36.00 
+         1 |       Jim Azard |             en_suite |     in_shambles |     4 |     2 | 26.00 
+
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  COST 
-         2 |      John Rambo |    seperate_bathroom |         perfect |     6 |     3 | 45.00 
+         2 |      John Rambo |    seperate_bathroom |            good |     6 |     3 | 32.50 
+
+    NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  COST 
+         3 | Silvester Stallone |    seperate_bathroom |     in_shambles |     6 |     3 | 26.00 
+
+    NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  COST 
+         4 |      Tio Mexico |    general_facilites |            fair |     8 |     2 | 22.50 
+
+MOST EXPENSIVE CABIN: 32.5
+
+CHEAPEEST CABIN: 22.5
+
+MAXIMUM INCOME PER NIGHT: 107.0
+
+CONDITION REPORT: 
+
+            BAD |            FAIR |            GOOD |     IN_SHAMBLES |         PERFECT 
+              0 |               1 |               1 |               2 |               0 
+

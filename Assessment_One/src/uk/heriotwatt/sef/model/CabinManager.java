@@ -8,7 +8,7 @@ import java.util.Locale;
 public class CabinManager {
 
 	private List<Cabin> cabins;
-	
+
 	private CabinFileHandler cfh;
 
 	public CabinManager() {
@@ -24,8 +24,7 @@ public class CabinManager {
 	public Cabin getCabinAtIndex(int index) {
 		if (index < this.getNumberOfCabins()) {
 			return this.cabins.get(index);
-		}
-		else {
+		} else {
 			throw new IndexOutOfBoundsException();
 		}
 	}
@@ -131,8 +130,11 @@ public class CabinManager {
 	}
 
 	/**
-	 * Prints the details of a specific cabin that is specified by its cabin number.
-	 * @param cabinNumber The cabinnumber of the cabin whose details should be printed.
+	 * Prints the details of a specific cabin that is specified by its cabin
+	 * number.
+	 * 
+	 * @param cabinNumber
+	 *            The cabinnumber of the cabin whose details should be printed.
 	 */
 	public void printDetailsForCabinNumber(int cabinNumber) {
 		try {
@@ -153,25 +155,39 @@ public class CabinManager {
 		StringBuilder sb = getAllCabinDetails();
 		System.out.println(sb.toString());
 	}
-	
+
 	/**
 	 * Acquires all information from the reports and prints the to a file.
 	 */
-	public void printReportsToFile()
-	{
+	public void printReportsToFile() {
 		String printString = "";
+		printString += "OVERVIEW OF CABIN DETAILS:\n\n";
 		StringBuilder sb = getAllCabinDetails();
-		printString = sb.toString();
+		printString += sb.toString();
+		printString += "SINGLE CABIN INFORMATION: \n\n";
 		for (Cabin cab : this.cabins) {
 			StringBuilder db = this.getCabinDetails(cab);
 			printString += db.toString();
 		}
+		try {
+			printString += "MOST EXPENSIVE CABIN: "
+					+ this.getExpensiveCabinCost() + "\n\n";
+			printString += "CHEAPEEST CABIN: " + this.getCheapestCabinCost()
+					+ "\n\n";
+		} catch (NoCabinsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		printString += "MAXIMUM INCOME PER NIGHT: "
+				+ this.getMaximumPossibleIncome() + "\n\n";
+		printString += "CONDITION REPORT: \n\n";
 		printString += this.getConditionReportPrint().toString();
 		cfh.writeToFile(printString);
 	}
 
 	/**
 	 * Returns the details about all cabins
+	 * 
 	 * @return A stringbuilder with formatted output.
 	 */
 	private StringBuilder getAllCabinDetails() {
@@ -186,33 +202,48 @@ public class CabinManager {
 							.getFacilities().toString().toLowerCase(),
 					cab.getBeds());
 		}
+		formatter.format("%n");
 		return sb;
 	}
 
 	/**
 	 * Prints the details of one cabin.
-	 * @param cab The cabin which details should be printed. 
+	 * 
+	 * @param cab
+	 *            The cabin which details should be printed.
 	 */
 	public void printCabDetails(Cabin cab) {
 		StringBuilder sb = getCabinDetails(cab);
 		System.out.println(sb.toString());
 	}
-	
-	public StringBuilder getConditionReportPrint()
-	{
+
+	/**
+	 * Returns a formatted condition report.
+	 * 
+	 * @return A strinbuilder containing the formatted condition report.
+	 */
+	public StringBuilder getConditionReportPrint() {
 		int[] conRep = getConditionReport();
 		StringBuilder sb = new StringBuilder();
 		Formatter formatter = new Formatter(sb, Locale.UK);
-		formatter.format("%1$15s | %2$15s | %3$15s | %4$15s | %5$15s %n", Condition.BAD.toString(),
-				Condition.FAIR.toString(), Condition.GOOD.toString(), Condition.IN_SHAMBLES.toString(),
+		formatter.format("%1$15s | %2$15s | %3$15s | %4$15s | %5$15s %n",
+				Condition.BAD.toString(), Condition.FAIR.toString(),
+				Condition.GOOD.toString(), Condition.IN_SHAMBLES.toString(),
 				Condition.PERFECT.toString(), Condition.UNKNOWN.toString());
-		formatter.format("%1$15d | %2$15d | %3$15d | %4$15d | %5$15d %n", conRep[0], conRep[1],
-				conRep[2], conRep[3], conRep[4], conRep[5]);
+		formatter.format("%1$15d | %2$15d | %3$15d | %4$15d | %5$15d %n",
+				conRep[0], conRep[1], conRep[2], conRep[3], conRep[4],
+				conRep[5]);
+		formatter.format("%n");
 		return sb;
 	}
-	
-	public int[] getConditionReport()
-	{
+
+	/**
+	 * Returns the values of the condition report.
+	 * 
+	 * @return String array containing the number of cabins of a certain
+	 *         condition.
+	 */
+	public int[] getConditionReport() {
 		int size = Condition.values().length;
 		int[] frequencyOfConditions = new int[size];
 		for (Cabin cabin : this.cabins) {
@@ -244,7 +275,9 @@ public class CabinManager {
 
 	/**
 	 * Returns the details of one cabin.
-	 * @param cab The cabin which details should be returned
+	 * 
+	 * @param cab
+	 *            The cabin which details should be returned
 	 * @return A stringbuilder with formatted output.
 	 */
 	private StringBuilder getCabinDetails(Cabin cab) {
@@ -252,13 +285,16 @@ public class CabinManager {
 		Formatter formatter = new Formatter(sb, Locale.UK);
 		formatter.format(
 				"%1$10s | %2$15s | %3$20s | %4$15s | %5$5s | %6$5s | %7$5s %n",
-				"NUMBER", "OWNER", "FACILITIES", "CONDITION", "BEDS", "ROOMS", "COST");
-		formatter.format(
-				"%1$10d | %2$15s | %3$20s | %4$15s | %5$5d | %6$5d | %7$5.2f %n",
-				cab.getCabinNumber(), cab.getOwner().getFirstAndLastName(), cab
-						.getFacilities().toString().toLowerCase(), cab
-						.getCondition().toString().toLowerCase(), 
-				cab.getBeds(), cab.getNumberOfBeds().length, cab.getCost());
+				"NUMBER", "OWNER", "FACILITIES", "CONDITION", "BEDS", "ROOMS",
+				"COST");
+		formatter
+				.format("%1$10d | %2$15s | %3$20s | %4$15s | %5$5d | %6$5d | %7$5.2f %n",
+						cab.getCabinNumber(), cab.getOwner()
+								.getFirstAndLastName(), cab.getFacilities()
+								.toString().toLowerCase(), cab.getCondition()
+								.toString().toLowerCase(), cab.getBeds(), cab
+								.getNumberOfBeds().length, cab.getCost());
+		formatter.format("%n");
 		return sb;
 	}
 

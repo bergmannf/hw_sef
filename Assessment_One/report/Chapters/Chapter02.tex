@@ -1,5 +1,29 @@
 %*****************************************
-\chapter{Design descisions \& diagrams}\label{ch:design_decisions_diagrams}
+\chapter{Diagrams}\label{ch:diagrams}
 %*****************************************
 
-%*****************************************
+\section{Class diagram}
+\label{sec:class_diagram}
+
+The provided class diagram does not display \texttt{getters} and \texttt{setters} even though they are present for every non-final attribute present in the diagram.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\textwidth]{gfx/class_diagram.png}
+  \caption{Class diagram of cabin manager}
+  \end{center}
+\end{figure}
+
+\section{Sequence diagram}
+\label{sec:sequence_diagram}
+
+The provided sequence diagram shows how the frequency report is generated and the printed to a file.
+
+Even though the real implementation prints all other details as well (cabin details, overview) these have been left out of the sequence diagram to improve its clarity.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\textwidth]{gfx/print_frequency_report.png}
+  \caption{Sequence diagram of the printing of the frequency report}
+  \end{center}
+\end{figure}

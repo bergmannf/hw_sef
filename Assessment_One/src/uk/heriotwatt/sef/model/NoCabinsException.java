@@ -7,8 +7,7 @@ public class NoCabinsException extends Exception {
 	 */
 	private static final long serialVersionUID = 2274177224545932291L;
 
-	public NoCabinsException(String msg)
-	{
+	public NoCabinsException(String msg) {
 		super(msg);
 	}
 }
