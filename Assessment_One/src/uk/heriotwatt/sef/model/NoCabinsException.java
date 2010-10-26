@@ -1,5 +1,11 @@
 package uk.heriotwatt.sef.model;
 
+/**
+ * Shows that no cabins are currently loaded.
+ * 
+ * @author florian
+ *
+ */
 public class NoCabinsException extends Exception {
 
 	/**

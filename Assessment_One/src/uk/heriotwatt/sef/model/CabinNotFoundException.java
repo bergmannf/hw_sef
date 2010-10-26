@@ -1,5 +1,11 @@
 package uk.heriotwatt.sef.model;
 
+/**
+ * Exception to clarify the missing of a cabin.
+ * 
+ * @author florian
+ *
+ */
 public class CabinNotFoundException extends Exception {
 
 	/**

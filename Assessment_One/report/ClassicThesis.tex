@@ -88,7 +88,7 @@
 % tocaligned eulerchapternumbers drafting linedheaders listsseparated 
 % subfig nochapters beramono eulermath parts minionpro pdfspacing 
 % listings dottedtoc minionprospacing manychapters
-\usepackage[eulerchapternumbers,drafting,listings,listsseparated,%pdfspacing,%listings,
+\usepackage[eulerchapternumbers,listings,listsseparated,%pdfspacing,%listings,
 						subfig,beramono,eulermath,parts]{classicthesis}
 						
 						
@@ -156,19 +156,20 @@
 % ********************************************************************
 \lstset{%C++,
     keywordstyle=\color{RoyalBlue},%\bfseries,
-    basicstyle=\small\ttfamily,
+    basicstyle=\footnotesize\ttfamily,
     %identifierstyle=\color{NavyBlue},
     commentstyle=\color{Green}\ttfamily,
     stringstyle=\rmfamily,
-    numbers=none,%left,%
+    numbers=left,%
     numberstyle=\scriptsize,%\tiny
-    stepnumber=5,
+    stepnumber=1,
     numbersep=8pt,
     showstringspaces=false,
     breaklines=true,
     frameround=ftff,
     frame=single,
     belowcaptionskip=.75\baselineskip,
+    captionpos=b,
     numberbychapter=false
     %frame=L
 } 

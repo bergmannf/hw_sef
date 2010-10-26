@@ -1,9 +1,9 @@
 package uk.heriotwatt.sef.model;
 
 /**
- * Stores values associated with a cabin.
+ * Stores the values associated with a cabin.
  * 
- * @author fhb2
+ * @author Florian Bergmann
  * 
  */
 public class Cabin {
@@ -14,7 +14,7 @@ public class Cabin {
 	private Facilities facilities;
 	private Name owner;
 	private Condition condition;
-	
+
 	private PriceMapping data;
 
 	private final int MINIMUM_NUMBER_OF_BEDS = 2;
@@ -22,19 +22,28 @@ public class Cabin {
 	private final double BASIC_COST = 10;
 	private final int BED_TO_ROOM_RATIO_MULTIPLIER = 5;
 
+	/**
+	 * Creates a new cabin object without values.
+	 */
 	public Cabin() {
 		this.data = new PriceMapping();
 	}
-	
+
 	/**
 	 * Creates a new cabin object with the specified values.
 	 * 
-	 * @param cabinNumber The cabin number.
-	 * @param beds The array of beds in the cabin..
-	 * @param size The size of the cabin.
-	 * @param facilities The facilites of the cabin.
-	 * @param owner The owner of the cabin.
-	 * @param condition The condition of the cabin.
+	 * @param cabinNumber
+	 *            The cabin number.
+	 * @param beds
+	 *            The array of beds in the cabin..
+	 * @param size
+	 *            The size of the cabin.
+	 * @param facilities
+	 *            The facilites of the cabin.
+	 * @param owner
+	 *            The owner of the cabin.
+	 * @param condition
+	 *            The condition of the cabin.
 	 */
 	public Cabin(int cabinNumber, int[] beds, double size,
 			Facilities facilities, Name owner, Condition condition) {
@@ -53,6 +62,8 @@ public class Cabin {
 	 */
 
 	/**
+	 * Returns the cabin number.
+	 * 
 	 * @return The number of cabins stored in the manager.
 	 */
 	public int getCabinNumber() {
@@ -62,13 +73,17 @@ public class Cabin {
 	/**
 	 * Sets the cabin number.
 	 * 
-	 * @param cabinNumber Number to be set.
+	 * @param cabinNumber
+	 *            Number to be set.
 	 */
 	public void setCabinNumber(int cabinNumber) {
 		this.cabinNumber = cabinNumber;
 	}
 
 	/**
+	 * Returns the beds of the cabin as array. Each array-cell represents a
+	 * room, each value of a cell the number of beds in the room.
+	 * 
 	 * @return Array of beds.
 	 */
 	public int[] getNumberOfBeds() {
@@ -78,7 +93,8 @@ public class Cabin {
 	/**
 	 * Sets the beds.
 	 * 
-	 * @param numberOfBeds The new array of beds.
+	 * @param numberOfBeds
+	 *            The new array of beds.
 	 */
 	public void setNumberOfBeds(int[] numberOfBeds) {
 		if (numberOfBeds.length > 0) {
@@ -99,6 +115,8 @@ public class Cabin {
 	}
 
 	/**
+	 * Returns the facilities of the cabin.
+	 * 
 	 * @return The facilities of the cabin.
 	 */
 	public Facilities getFacilities() {
@@ -115,6 +133,8 @@ public class Cabin {
 	}
 
 	/**
+	 * Returns the owner's name.
+	 * 
 	 * @return The owner of the cabin.
 	 */
 	public Name getOwner() {
@@ -130,8 +150,9 @@ public class Cabin {
 		this.owner = owner;
 	}
 
-	
 	/**
+	 * Returns the size of the cabin.
+	 * 
 	 * @return The size of the cabin.
 	 */
 	public double getSize() {
@@ -141,7 +162,8 @@ public class Cabin {
 	/**
 	 * Sets the size of the cabin.
 	 * 
-	 * @param size The new size (must be bigger than 0)
+	 * @param size
+	 *            The new size (must be bigger than 0)
 	 */
 	public void setSize(double size) {
 		if (size >= 0) {
@@ -152,12 +174,10 @@ public class Cabin {
 	}
 
 	/**
-	 * The cost is calculated based on different factors:
-	 * - The condition.
-	 * - The facilities.
-	 * - The size.
-	 * - The beds/rooms present (The less beds per room the more expensive).
-	 * The values associated with the first three are stored in {@link PriceMapping}
+	 * The cost is calculated based on different factors: - The condition. - The
+	 * facilities. - The size. - The beds/rooms present (The less beds per room
+	 * the more expensive). The values associated with the first three are
+	 * stored in {@link PriceMapping}
 	 * 
 	 * @return The cost if the cabin.
 	 */
@@ -177,6 +197,8 @@ public class Cabin {
 	}
 
 	/**
+	 * Returns the cabins condition.
+	 * 
 	 * @return The condition.
 	 */
 	public Condition getCondition() {
@@ -186,22 +208,25 @@ public class Cabin {
 	/**
 	 * Sets the condition of the cabin.
 	 * 
-	 * @param condition New condition to be set.
+	 * @param condition
+	 *            New condition to be set.
 	 */
 	public void setCondition(Condition condition) {
 		this.condition = condition;
 	}
-	
+
 	/**
+	 * Returns the number of beds in a cabin.
+	 * 
 	 * @return The number of beds in the cabin.
 	 */
-	public int getBeds()
-	{
+	public int getBeds() {
 		return this.calculateNumberOfBeds(this.beds);
 	}
 
 	/**
-	 * Calculates the room to bed ratio. 
+	 * Calculates the room to bed ratio.
+	 * 
 	 * @return The room to bed ratio.
 	 */
 	public double calculateRoomToBedRatio() {
@@ -210,7 +235,7 @@ public class Cabin {
 		double bedToRoomRatio = rooms / beds;
 		return bedToRoomRatio;
 	}
-		
+
 	private int calculateNumberOfBeds(int[] numberOfBeds) {
 		int result = 0;
 		for (int i : numberOfBeds) {
