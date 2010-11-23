@@ -69,8 +69,8 @@
 %*******************************************************
 % Packages with options that might require adjustments
 %*******************************************************
-\usepackage[latin1]{inputenc} 
-\usepackage[ngerman,american]{babel}           
+\usepackage[utf8]{inputenc} 
+\usepackage[british]{babel}           
 % Maxnames gibt an wie viele Autoren ausgeschrieben werden.
 % BibliographyStrings setzt den zu verwendenten Verkuerzungsstrings bei ueberschreiten (hier: et al.)
 \usepackage[natbib=true,style=authoryear,maxnames=2]{biblatex}
@@ -89,6 +89,13 @@
 % listings dottedtoc minionprospacing manychapters
 \usepackage[eulerchapternumbers,drafting,listings,listsseparated,%pdfspacing,%listings,
 						subfig,beramono,eulermath,parts]{classicthesis}
+						
+						
+\areaset[0.0cm]{14.0cm}{24.0cm}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{csquotes}
+\usepackage{ltxtable}
 
 %*******************************************************
 % Some font experiments
@@ -196,7 +203,7 @@
 \begin{document}
 \frenchspacing
 \raggedbottom
-\selectlanguage{american} % american ngerman
+\selectlanguage{british} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
 \pagenumbering{roman}
@@ -204,13 +211,7 @@
 %********************************************************************
 % Frontmatter
 %*******************************************************
-\include{FrontBackmatter/DirtyTitlepage}
 \include{FrontBackmatter/Titlepage}
-\include{FrontBackmatter/Titleback}
-\cleardoublepage\include{FrontBackmatter/Dedication}
-\cleardoublepage\include{FrontBackmatter/Abstract}
-\cleardoublepage\include{FrontBackmatter/Publication}
-\cleardoublepage\include{FrontBackmatter/Acknowledgments}
 \pagestyle{scrheadings}
 \cleardoublepage\include{FrontBackmatter/Contents}
 %********************************************************************
@@ -237,8 +238,6 @@
 % Other Stuff in the Back
 %*******************************************************
 \cleardoublepage\include{FrontBackmatter/Bibliography}
-\cleardoublepage\include{FrontBackmatter/Colophon}
-\cleardoublepage\include{FrontBackmatter/Declaration}
 % ********************************************************************
 % Game Over: Restart, Restore or Quit?
 %*******************************************************
