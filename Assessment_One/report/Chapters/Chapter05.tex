@@ -2,7 +2,7 @@
 \chapter{Testing report}\label{ch:testing_report} % $\mathbb{ZNR}$
 %************************************************
 
-The application is delivered with a set of test cases that all pass: they are printed in \autoref{ch:appendix}.
+The application is delivered with a set of test cases that all pass: they are printed in \autoref{ch:appendix}\footnote{In order to run the test cases it is necessary that the \href{http://www.junit.org/}{JUnit} (\url{http://www.junit.org/}) and the \href{http://code.google.com/p/mockito/}{Mockito} (\url{http://code.google.com/p/mockito/}) framework are present.}.
 
 A short list of noteworthy test cases shall be provided as an overview:
 
@@ -11,20 +11,24 @@ A short list of noteworthy test cases shall be provided as an overview:
 
 \begin{itemize}
 \item Create new Cabin from valid input string.
-\item Create new cabin from invalid input string (throws exception).
+\item Create new cabin from invalid input string (throws IllegalArgumentException).
+\item Read from non present file (catch with stack trace).
+\item Write to non present file (catch with stack trace).
 \end{itemize}
 \item[Cabin:]
 
 \begin{itemize}
-\item Set number of beds (too few, too many, valid numbers).
+\item Set number of beds (too few $\rightarrow$ IllegalArgumentException, too many $\rightarrow$ IllegalArgumentException, valid numbers).
 \item Test cost calculation algorithm.
 \end{itemize}
 \item[Cabin manager:]
 
 \begin{itemize}
 \item Add cabin.
-\item Get cabin (with and without any cabins).
-\item Find cabin by number (cabin is in list and cabin is not in list).
-\item Get cheapest and most expensive cabin.
+\item Get cabin at index (with and without any cabins $\rightarrow$ IndexOutOfBoundsException).
+\item Find cabin by number (cabin is in list and cabin is not in list $\rightarrow$ CabinNotFoundException).
+\item Get cheapest and most expensive cabin (without cabins $\rightarrow$ NoCabinsException).
 \end{itemize}
 \end{description}
+
+The error handling of incorrect input in the file handler is performed by checking each attribute and - if an error occurs - add this attribute to an error-string that will be returned via an IllegalArgumentException. This way it is possible to inform the user about the concrete argument that caused the error.

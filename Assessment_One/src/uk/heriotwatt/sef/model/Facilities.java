@@ -1,13 +1,13 @@
 package uk.heriotwatt.sef.model;
 
 /**
- * Stores the different possibilities of facilities.
+ * Stores the different possible values of facilities.
  * 
  * @author fhb2
  * 
  */
 public enum Facilities {
 
-	GENERAL_FACILITES, SEPERATE_BATHROOM, EN_SUITE, UNKNOWN
+	GENERAL_FACILITIES, SEPERATE_BATHROOM, EN_SUITE, UNKNOWN
 
 }

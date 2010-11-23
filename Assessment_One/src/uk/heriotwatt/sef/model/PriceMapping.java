@@ -63,7 +63,7 @@ public class PriceMapping {
 				PriceList.VERY_EXPENSIVE.cost());
 		this.facilityPrices.put(Facilities.SEPERATE_BATHROOM,
 				PriceList.FAIR.cost());
-		this.facilityPrices.put(Facilities.GENERAL_FACILITES,
+		this.facilityPrices.put(Facilities.GENERAL_FACILITIES,
 				PriceList.BUDGET.cost());
 	}
 

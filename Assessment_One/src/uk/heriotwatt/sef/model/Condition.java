@@ -1,7 +1,7 @@
 package uk.heriotwatt.sef.model;
 
 /**
- * Stores the different possibilities of conditions.
+ * Stores the different possible of conditions.
  * 
  * @author fhb2
  * 

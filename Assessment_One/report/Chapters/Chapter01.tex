@@ -16,11 +16,14 @@ Apart from the mandatory attributes, the following attributes were chosen to be 
 \section{Cost calculation}
 \label{sec:cost_calculation}
 
-The calculation of a cabin's cost for one night, are calculated according to the following formula:
+The calculation of a cabin's cost for one night are calculated according to the following formula:
 
 \texttt{BASIC\_COST + CONDITION\_COST + FACILITIES\_COST + SIZE\_COST + (BED\_TO\_ROOM\_RATIO * BED\_TO\_ROOM\_MULTIPLIER)}
 
 \texttt{BASIC\_COST} and \texttt{BED\_TO\_ROOM\_MULTIPLIER} are constants that can be set in the \texttt{cabin} class.
+
+The costs associated with the \texttt{condition}, the \texttt{facilities} and the \texttt{size} are stored in a separate class (\texttt{PriceMapping}) and can be adjusted there.
+The prices are stored in five discreet values in a \texttt{enumeration} (\texttt{PriceList}).
 
 \section{Frequency reports}
 \label{sec:frequency_report}

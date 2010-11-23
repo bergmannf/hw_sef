@@ -11,6 +11,13 @@ public class CabinManager {
 
 	private CabinFileHandler cfh;
 
+	/**
+	 * Creates a new cabin manager object from the provided arguments.
+	 * 
+	 * @param cfh
+	 *            The filehandler that loads cabins from a file and saves
+	 *            reports to a file.
+	 */
 	public CabinManager(CabinFileHandler cfh) {
 		this.cabins = new ArrayList<Cabin>();
 		this.cfh = cfh;
@@ -20,7 +27,7 @@ public class CabinManager {
 	public void addCabin(Cabin cab) {
 		this.cabins.add(cab);
 	}
-	
+
 	/**
 	 * Attempts to find a cabin with the provided cabinNumber in the cabin-List.
 	 * 
@@ -51,7 +58,8 @@ public class CabinManager {
 	/**
 	 * Retrieves that cabin at the specified position in the cabin list.
 	 * 
-	 * @param index The position for which the cabin should be returned.
+	 * @param index
+	 *            The position for which the cabin should be returned.
 	 * @return Tha cabin.
 	 */
 	public Cabin getCabinAtIndex(int index) {
@@ -151,7 +159,7 @@ public class CabinManager {
 		try {
 			printString += "MOST EXPENSIVE CABIN: "
 					+ this.getExpensiveCabinCost() + "\n\n";
-			printString += "CHEAPEEST CABIN: " + this.getCheapestCabinCost()
+			printString += "CHEAPEST CABIN: " + this.getCheapestCabinCost()
 					+ "\n\n";
 		} catch (NoCabinsException e) {
 			// TODO Auto-generated catch block
@@ -188,7 +196,7 @@ public class CabinManager {
 	 * number.
 	 * 
 	 * @param cabinNumber
-	 *            The cabinnumber of the cabin whose details should be printed.
+	 *            The cabin number of the cabin whose details should be printed.
 	 */
 	public void printDetailsForCabinNumber(int cabinNumber) {
 		try {
@@ -205,7 +213,7 @@ public class CabinManager {
 	/**
 	 * Returns a formatted condition report.
 	 * 
-	 * @return A strinbuilder containing the formatted condition report.
+	 * @return A stringbuilder containing the formatted condition report.
 	 */
 	public StringBuilder getConditionReportPrint() {
 		int[] conRep = getConditionReport();

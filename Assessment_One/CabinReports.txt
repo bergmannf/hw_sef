@@ -2,13 +2,15 @@ OVERVIEW OF CABIN DETAILS:
 
     NUMBER |      OWNER |           FACILITIES |  BEDS 
          1 |      J. S. |             en_suite |     2 
-         4 |      C. N. |    general_facilites |     4 
+         4 |      C. N. |   general_facilities |     4 
          5 |      S. G. |             en_suite |     3 
-         6 |      U. O. |    general_facilites |     6 
+         6 |      U. O. |   general_facilities |     6 
          7 |      P. N. |    seperate_bathroom |     8 
          8 |      R. C. |    seperate_bathroom |     4 
-         9 |      B. W. |    general_facilites |     4 
+         9 |      B. W. |   general_facilities |     4 
         10 |      G. J. |             en_suite |     8 
+         2 |      B. F. |             en_suite |     3 
+         3 |      H. S. |   general_facilities |     6 
 
 SINGLE CABIN INFORMATION: 
 
@@ -16,13 +18,13 @@ SINGLE CABIN INFORMATION:
          1 |        John Sly |             en_suite |         perfect |     2 |     2 | 10.00 | 37.50 
 
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
-         4 | Conchobar Nessa |    general_facilites |            good |     4 |     3 | 35.00 | 25.00 
+         4 | Conchobar Nessa |   general_facilities |            good |     4 |     3 | 35.00 | 25.00 
 
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
          5 |        Sie Gurd |             en_suite |            fair |     3 |     1 | 45.00 | 32.50 
 
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
-         6 | Uthuce Odysseus |    general_facilites |     in_shambles |     6 |     3 | 55.00 | 23.50 
+         6 | Uthuce Odysseus |   general_facilities |     in_shambles |     6 |     3 | 55.00 | 23.50 
 
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
          7 |  Perseus Nestor |    seperate_bathroom |         perfect |     8 |     4 | 39.00 | 30.00 
@@ -31,19 +33,25 @@ SINGLE CABIN INFORMATION:
          8 |   Robert Cotton |    seperate_bathroom |            fair |     4 |     3 | 38.00 | 25.00 
 
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
-         9 |        Beo Wulf |    general_facilites |             bad |     4 |     2 | 38.50 | 20.00 
+         9 |        Beo Wulf |   general_facilities |             bad |     4 |     2 | 38.50 | 20.00 
 
     NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
         10 |  Grimur Jonsson |             en_suite |            good |     8 |     3 | 27.00 | 28.50 
 
-MOST EXPENSIVE CABIN: 37.5
+    NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
+         2 |    Ben Franklin |             en_suite |         perfect |     3 |     3 | 35.75 | 40.00 
 
-CHEAPEEST CABIN: 20.0
+    NUMBER |           OWNER |           FACILITIES |       CONDITION |  BEDS | ROOMS |  SIZE |  COST 
+         3 |   Homer Simpson |   general_facilities |            fair |     6 |     3 | 53.95 | 27.50 
 
-MAXIMUM INCOME PER NIGHT: 222.0
+MOST EXPENSIVE CABIN: 40.0
+
+CHEAPEST CABIN: 20.0
+
+MAXIMUM INCOME PER NIGHT: 289.5
 
 CONDITION REPORT: 
 
             BAD |            FAIR |            GOOD |     IN_SHAMBLES |         PERFECT 
-              1 |               2 |               2 |               1 |               2 
+              1 |               3 |               2 |               1 |               3 
 
