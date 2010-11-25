@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-public class CabinManager extends Observable {
+public class LocationManager extends Observable {
 
 	private List<Location> locations;
 
@@ -17,7 +17,7 @@ public class CabinManager extends Observable {
 	private GenericFileHandler<Cabin> cfh;
 	private GenericFileHandler<Plot> lfh;
 
-	public CabinManager(GenericFileHandler<Cabin> cfh,
+	public LocationManager(GenericFileHandler<Cabin> cfh,
 			GenericFileHandler<Plot> lfh) {
 		this.locations = new ArrayList<Location>();
 		this.cfh = cfh;
@@ -149,6 +149,7 @@ public class CabinManager extends Observable {
 			Location loc = this.findLocationById(bookedLocation);
 			if (!loc.isBooked) {
 				loc.isBooked = true;
+				loc.bookings++;
 				this.setChanged();
 				this.notifyObservers(true);
 				this.clearChanged();
@@ -165,7 +166,7 @@ public class CabinManager extends Observable {
 
 	public void orderLocations(boolean byId) {
 		if (byId) {
-			Collections.sort(locations, new PriceComparator());
+			Collections.sort(locations, new IdComparator());
 		} else {
 			Collections.sort(locations, new PriceComparator());
 		}
