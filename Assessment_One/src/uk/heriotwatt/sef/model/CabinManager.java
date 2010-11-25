@@ -91,7 +91,6 @@ public class CabinManager {
 	 * @throws NoCabinsException
 	 */
 	public double getCheapestCabinCost() throws NoCabinsException {
-		// TODO: Empty array;
 		if (this.cabins.size() > 0) {
 			Cabin cheapestCab = null;
 			for (Cabin cab : this.cabins) {
@@ -162,7 +161,6 @@ public class CabinManager {
 			printString += "CHEAPEST CABIN: " + this.getCheapestCabinCost()
 					+ "\n\n";
 		} catch (NoCabinsException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		printString += "MAXIMUM INCOME PER NIGHT: "
@@ -303,7 +301,6 @@ public class CabinManager {
 		formatter.format("%1$10s | %2$10s | %3$20s | %4$5s %n", "NUMBER",
 				"OWNER", "FACILITIES", "BEDS");
 		for (Cabin cab : this.cabins) {
-			// TODO Return the initials of the owner.
 			formatter.format("%1$10d | %2$10s | %3$20s | %4$5d %n",
 					cab.getCabinNumber(), cab.getOwner().getInitials(), cab
 							.getFacilities().toString().toLowerCase(),

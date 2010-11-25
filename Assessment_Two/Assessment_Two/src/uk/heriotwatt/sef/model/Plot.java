@@ -30,7 +30,6 @@ public class Plot extends Location implements ICsvSerialisable<Plot> {
 
 	public Plot() {
 		super("", 0, 0);
-		// TODO Auto-generated constructor stub
 	}
 
 	public boolean isHasElectricity() {

@@ -2,6 +2,11 @@ package uk.heriotwatt.sef.model;
 
 import java.util.Comparator;
 
+/**
+ * Compares two locations based on their price.
+ *
+ * @author florian
+ */
 public class PriceComparator implements Comparator<Location> {
 
 	@Override

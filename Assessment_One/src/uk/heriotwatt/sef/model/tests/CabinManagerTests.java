@@ -90,7 +90,6 @@ public class CabinManagerTests {
 		try {
 			cabFound = cabMan.findCabinByCabinNumber(1);
 		} catch (CabinNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Assert.assertEquals(cab, cabFound);
@@ -127,7 +126,6 @@ public class CabinManagerTests {
 		try {
 			cheapest = cabMan.getCheapestCabinCost();
 		} catch (NoCabinsException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Assert.assertEquals(40, cheapest, 0);
@@ -151,7 +149,6 @@ public class CabinManagerTests {
 		try {
 			mostExpensive = cabMan.getExpensiveCabinCost();
 		} catch (NoCabinsException e) {
-			// TODO: handle exception
 		}
 		Assert.assertEquals(50, mostExpensive, 0);
 	}

@@ -116,8 +116,19 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 		categoryComboBox.addItem("Id");
 		categoryComboBox.addItem("Price");
 		categoryComboBox.addItem("Area");
+		categoryComboBox.addItem("Booked");
 		searchButton = new JButton("Search", new ImageIcon(
 				"resources/magnifier.png"));
+		searchButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String searchString = searchTextField.getText();
+				String category = categoryComboBox.getSelectedItem().toString();
+				List<Location> searchedList = manager.searchLocations(searchString, category);
+				displayLocations(searchedList);
+			}
+		});
 		searchPanel2.add(searchTextField);
 		searchPanel2.add(categoryComboBox);
 		searchPanel2.add(searchButton);
@@ -175,8 +186,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				// TODO: Create a new window containing a JTable.
 			}
 		});
 
@@ -278,7 +288,6 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 	}
 
 	private void initializeLocationsPanel(JPanel panel) {
-		// TODO: Use a JScrollpane.
 		this.locationButtons = new LinkedList<JButton>();
 		panel.setLayout(new BoxLayout(locationOverviewPanel,
 				BoxLayout.PAGE_AXIS));
@@ -345,7 +354,6 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 				this.clearCabinFields();
 			}
 		} catch (CabinNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
