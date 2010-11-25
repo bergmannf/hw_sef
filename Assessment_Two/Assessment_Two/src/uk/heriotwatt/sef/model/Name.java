@@ -49,4 +49,8 @@ public class Name {
 	public String getInitials() {
 		return firstName.charAt(0) + ". " + lastName.charAt(0) + ".";
 	}
+
+	public Object getMiddleName() {
+		return this.middleName;
+	}
 }

@@ -7,10 +7,11 @@ public abstract class Location {
 	protected int bookings;
 	protected double size;
 	
-	public Location(String number, double size) {
+	public Location(String number, double size, int bookings2) {
 		super();
 		this.id = number;
 		this.size = size;
+		this.bookings = bookings2;
 	}
 
 	public String getId() {

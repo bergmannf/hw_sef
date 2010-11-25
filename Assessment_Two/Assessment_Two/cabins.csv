@@ -1,0 +1,19 @@
+#
+# Format:
+#
+# CabinNumber,Size,Facilities,Condition,Forename,Middlename,Surname,Bookings,BedsRoom1,BedsRoom2,...,[BedsRoomN]
+#
+#
+C1,10,EN_SUITE,PERFECT,John,Rambo,Sly,0,1,1
+# Following are two faulty cabins.
+C2,20,EN_SUTE,I_SHMBES,King,,Lear,0,2,3
+C3,25,EN_SUITE,IN_SHMBLES,Bethad,Mac,Findlaich,0,2,4
+C4,35,GENERAL_FACILITIES,GOOD,Conchobar,Mac,Nessa,0,2,1,1
+C5,45,EN_SUITE,FAIR,Sie,,Gurd,0,3
+C6,55,GENERAL_FACILITIES,IN_SHAMBLES,Uthuce,,Odysseus,0,2,3,1
+C7,39,SEPERATE_BATHROOM,PERFECT,Perseus,,Nestor,0,2,2,2,2
+C8,38,SEPERATE_BATHROOM,FAIR,Robert,Bruce,Cotton,0,2,1,1
+C9,38.5,GENERAL_FACILITIES,BAD,Beo,,Wulf,0,2,2
+C10,27,EN_SUITE,GOOD,Grimur,,Jonsson,0,2,4,2
+C2,35.75,EN_SUITE,PERFECT,Ben,,Franklin,0,1,1,1
+C3,53.95,GENERAL_FACILITIES,FAIR,Homer,,Simpson,0,2,2,2

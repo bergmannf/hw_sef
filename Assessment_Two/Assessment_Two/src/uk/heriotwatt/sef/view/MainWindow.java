@@ -1,13 +1,17 @@
 package uk.heriotwatt.sef.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,13 +21,20 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import uk.heriotwatt.sef.model.CabinManager;
+import uk.heriotwatt.sef.model.CabinNotFoundException;
+import uk.heriotwatt.sef.model.Location;
+import uk.heriotwatt.sef.model.LocationAlreadyBookedException;
+
 import net.miginfocom.swing.MigLayout;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements ActionListener, Observer {
 
 	/**
 	 * 
@@ -47,13 +58,26 @@ public class MainWindow extends JFrame {
 	private JTextField numberOfNightsTextField;
 	private JComboBox locationComboBox;
 	private JButton bookButton;
+	private JTextField priceTextField;
+	private JLabel priceLabel;
+	
+	private CabinManager manager;
+	private JPanel plotDetails;
+	private JPanel cabinDetails;
+	private Component conditionTextField;
+	private Component facilitiesTextField;
+	private Component roomTextField;
 
-	public MainWindow()
+	public MainWindow(CabinManager manager)
 	{
+		this.manager = manager;
+		this.manager.addObserver(this);
 		this.initializeComponents();
+		this.displayLocations(manager.getLocations());
 	}
 
 	private void initializeComponents() {
+		
 		initializeMenuBar();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -63,13 +87,14 @@ public class MainWindow extends JFrame {
 		this.initializeSearchPanel(searchPanel);
 		locationOverviewPanel = new JPanel();
 		this.initializeLocationsPanel(locationOverviewPanel);
-		locationDetails = new JPanel(new MigLayout());
+		JScrollPane scrollPane = new JScrollPane(locationOverviewPanel);
+		locationDetails = new JPanel(new MigLayout("","[][grow][][grow]"));
 		this.initializeLocationDetails(locationDetails);
 		bookingPanel = new JPanel(new MigLayout());
 		this.initializeBookingPanel(bookingPanel);
 		
 		panel.add(searchPanel, BorderLayout.NORTH);
-		panel.add(locationOverviewPanel, BorderLayout.WEST);
+		panel.add(scrollPane, BorderLayout.WEST);
 		panel.add(locationDetails, BorderLayout.CENTER);
 		panel.add(bookingPanel, BorderLayout.SOUTH);
 		
@@ -86,7 +111,10 @@ public class MainWindow extends JFrame {
 		
 		searchTextField = new JTextField();
 		categoryComboBox = new JComboBox();
-		searchButton = new JButton("Search", new ImageIcon(getClass().getResource("../resources/magnifier.png")));
+		categoryComboBox.addItem("Id");
+		categoryComboBox.addItem("Price");
+		categoryComboBox.addItem("Area");
+		searchButton = new JButton("Search", new ImageIcon("resources/magnifier.png"));
 		searchPanel2.add(searchTextField);
 		searchPanel2.add(categoryComboBox);
 		searchPanel2.add(searchButton);
@@ -100,7 +128,7 @@ public class MainWindow extends JFrame {
 		 */
 		fileMenu = new JMenu("File");
 		JMenuItem exitItem = new JMenuItem("Close");
-		exitItem.setIcon(new ImageIcon(getClass().getResource("../resources/door_out.png")));
+		exitItem.setIcon(new ImageIcon("resources/door_out.png"));
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -115,33 +143,31 @@ public class MainWindow extends JFrame {
 		 */
 		JMenu editMenu = new JMenu("Edit");
 		JMenuItem addLocationMenuItem = new JMenuItem("Add Location");
-		addLocationMenuItem.setIcon(new ImageIcon(getClass().getResource("../resources/map_add.png")));
+		addLocationMenuItem.setIcon(new ImageIcon("resources/map_add.png"));
 		JMenu orderMenu = new JMenu("Order by:");
-		orderMenu.setIcon(new ImageIcon(getClass().getResource("../resources/sort_ascending.png")));
+		orderMenu.setIcon(new ImageIcon("resources/sort_ascending.png"));
 		JMenuItem orderByIdItem = new JMenuItem("Id");
-		orderByIdItem.setIcon(new ImageIcon(getClass().getResource("../resources/key.png")));
+		orderByIdItem.setIcon(new ImageIcon("resources/key.png"));
 		orderByIdItem.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				manager.orderLocations(true);
 			}
 		});
 		
 		JMenuItem orderByCostItem = new JMenuItem("Price");
-		orderByCostItem.setIcon(new ImageIcon(getClass().getResource("../resources/money_dollar.png")));
+		orderByCostItem.setIcon(new ImageIcon("resources/money_dollar.png"));
 		orderByCostItem.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				manager.orderLocations(false);
 			}
 		});
 		
 		JMenuItem showSummaryItem = new JMenuItem("Show Summary");
-		showSummaryItem.setIcon(new ImageIcon(getClass().getResource("../resources/table.png")));
+		showSummaryItem.setIcon(new ImageIcon("resources/table.png"));
 		showSummaryItem.addActionListener(new ActionListener() {
 			
 			@Override
@@ -168,11 +194,41 @@ public class MainWindow extends JFrame {
 		idLabel = new JLabel("Id:");
 		locationDetails.add(idLabel);
 		idTextField = new JTextField();
-		locationDetails.add(idTextField, "wrap");
+		locationDetails.add(idTextField, "growx, wrap");
 		sizeLabel = new JLabel("Size:");
 		locationDetails.add(sizeLabel);
 		sizeTextField = new JTextField();
-		locationDetails.add(sizeTextField, "wrap");
+		locationDetails.add(sizeTextField, "growx");
+		priceLabel = new JLabel("Price:");
+		priceTextField = new JTextField();
+		locationDetails.add(priceLabel);
+		locationDetails.add(priceTextField, "growx, wrap");
+		
+		cabinDetails = new JPanel(new MigLayout());
+		
+		Border cabinBorder = new TitledBorder("Cabin details:");
+		cabinDetails.setBorder(cabinBorder);
+		Component conditionLabel = new JLabel("Condition:");
+		cabinDetails.add(conditionLabel);
+		conditionTextField = new JTextField();
+		cabinDetails.add(conditionTextField, "growx");
+		JLabel facilitiesLabel = new JLabel("Facilities:");
+		cabinDetails.add(facilitiesLabel);
+		facilitiesTextField = new JTextField();
+		cabinDetails.add(facilitiesTextField, "growx, wrap");
+		JLabel cabinRoomsLabel = new JLabel("Rooms:");
+		cabinDetails.add(cabinRoomsLabel);
+		roomTextField = new JTextField();
+		cabinDetails.add(roomTextField, "growx");
+		
+		
+		plotDetails = new JPanel();
+		Border plotBorder = new TitledBorder("Plot details:");
+		plotDetails.setBorder(plotBorder);
+		
+		
+		locationDetails.add(cabinDetails, "grow, wrap, span 4");
+		locationDetails.add(plotDetails, "grow, span 4");
 	}
 
 	private void initializeBookingPanel(JPanel bookingPanel) {
@@ -184,7 +240,24 @@ public class MainWindow extends JFrame {
 		
 		numberOfNightsTextField = new JTextField();
 		locationComboBox = new JComboBox();
-		bookButton = new JButton("Book", new ImageIcon(getClass().getResource("../resources/money.png")));
+		bookButton = new JButton("Book", new ImageIcon("resources/money.png"));
+		bookButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String bookedLocation = locationComboBox.getSelectedItem().toString();
+				String numberOfNights = numberOfNightsTextField.getText();
+				try {
+					int nights = Integer.parseInt(numberOfNights);
+					manager.bookLocation(bookedLocation, nights);
+				} catch (NumberFormatException e2) {
+					e2.printStackTrace();
+				} catch (LocationAlreadyBookedException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		bookingPanel.add(locationComboBox);
 		bookingPanel.add(numberOfNightsTextField);
 		bookingPanel.add(bookButton);
@@ -196,12 +269,68 @@ public class MainWindow extends JFrame {
 		panel.setLayout(new BoxLayout(locationOverviewPanel, BoxLayout.PAGE_AXIS));
 		Border border = new TitledBorder("Locations:");
 		panel.setBorder(border);
-		panel.add(new JButton("C1"));
-		panel.add(new JButton("C2"));
 	}
 	
-	public void setLocationBooked(boolean isBooked)
+	public void setLocationBooked(JButton button, boolean isBooked)
 	{
+		if (isBooked) {
+			Icon bookedIcon = new ImageIcon("resources/flag_red.png");
+			button.setIcon(bookedIcon);
+		}
+		else {
+			Icon freeIcon = new ImageIcon("resources/flag_green.png");
+			button.setIcon(freeIcon);
+		}
+	}
+	
+	private void displayLocations(List<Location> locations)
+	{
+		locationButtons.clear();
+		this.locationOverviewPanel.removeAll();
+		for (Location location : locations) {
+			JButton button = new JButton(location.getId());
+			this.setLocationBooked(button, location.isBooked());
+			button.addActionListener(this);
+			locationButtons.add(button);
+			this.locationOverviewPanel.add(button);
+			
+			this.locationComboBox.addItem(location.getId());
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		if (source instanceof JButton)
+		{
+			JButton button = (JButton) source;
+			String id = button.getText();
+			this.displayLocation(id);
+		}
 		
+	}
+
+	private void displayLocation(String id) {
+		Location location;
+		try {
+			location = manager.findLocationById(id);
+			this.idTextField.setText(location.getId());
+			String cost = String.valueOf(location.getCost());
+			this.priceTextField.setText(cost);
+			String size = String.valueOf(location.getSize());
+			this.sizeTextField.setText(size);
+		} catch (CabinNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		this.reloadData();
+	}
+
+	private void reloadData() {
+		this.displayLocations(this.manager.getLocations());
 	}
 }
