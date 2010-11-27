@@ -1,8 +1,5 @@
-#
-# Format:
-#
-# PlotNumber,Size,Electricity,Bookings
-#
-#
-P1,20,true,0
-P2,10,false,0
+P1,10.000000,true,1
+P2,12.000000,false,0
+P3,14.000000,true,0
+P4,23.000000,false,0
+P5,52.000000,true,0

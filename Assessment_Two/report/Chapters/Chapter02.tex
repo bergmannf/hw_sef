@@ -1,133 +1,20 @@
-%*****************************************
-\chapter{UML exercise one}\label{ch:uml}
-%*****************************************
+\chapter{Overview}
+\label{ch:report}
 
-From the textual description of the use case the following use case diagram was derived:
+\section{Plot-class}
 
-\begin{figure}[H]
-\begin{centering}
-\includegraphics[width=\textwidth]{gfx/usecase.pdf} 
-\end{centering}
-\caption{Use case diagram.}
-\label{fig:usecase}
-\end{figure}
-
-The complexity level with many \textit{include} cases was choose to justify the use of a diagram and to show the possible sub-cases that might be reused.
-
-Following from this description the \textit{book location} high-ceremony use case would look like the following scenario:
-
-\section{High ceremony use cases}
-
-\subsection{Use case: book location}
+The plot class provides the following attributes:
 
 \begin{description}
-\item[Goal:] Book a location.
-\item[Actors:] Traveller, Staff.
-\item[Precondition:] A location is available.
-\item[Postcondition:] The traveller has booked a location for one night.
-\item[Steps:]
-\begin{enumerate}
-\item Traveller \textit{fills in form}.
-\item Staff \textit{fills in employer form}.
-\item Traveller \textit{pays location}.
-\item Staff \textit{shows location} to traveller.
-\end{enumerate}
-
-\item[Alternatives:]
-\begin{enumerate}
-\item[1A.] Fill in form use case fails.\\
-The booking fails.
-\item[3A.] Pay location use case fails.\\
-The booking fails.
-\end{enumerate}
+\item[Id:] Unique identifier for a plot.
+\item[Size:] The area in square-meters provided by the plot.
+\item[Electricity:] Boolean depicting whether the plot provides electricity or not.
 \end{description}
 
-\subsection{Use case: fill in form}
+The cost is calculated by associated the size with the adequate cost - this is done in the \texttt{PriceMapping} class.
 
-\begin{description}
-\item[Goal:] Fill in form.
-\item[Actors:] Traveller, Staff.
-\item[Precondition:] User wants to book a location.
-\item[Postcondition:] Form was filled in correct.
-\item[Steps:]
-\begin{enumerate}
-\item Traveller enters personal details.
-\item Traveller provides staff with passport.
-\item Staff \textit{checks age}.
-\item Staff returns passport.
-\end{enumerate}
+If the plot provides electricity another amount is added on top (can be changed in the plot class as constant - default value is 10).
 
-\item[Alternatives:]
-\begin{enumerate}
-\item[3A.] Check age use case fails.\\
-The booking fails.
-\end{enumerate}
-\end{description}
+\section{Status report}
 
-\subsection{Use case: pay location}
-
-\begin{description}
-\item[Goal:] Pay for stay.
-\item[Actors:] Traveller, Staff.
-\item[Precondition:] -
-\item[Postcondition:] -
-\item[Steps:] 
-\begin{enumerate}
-\item Traveller pays for one night.
-\item Staff accepts payment.
-\item Staff marks payment as received.
-\end{enumerate}
-
-\item[Alternatives:]
-\begin{enumerate}
-\item[1A.] Traveller can not pay for stay.\\
-The payment fails.
-\end{enumerate}
-\end{description}
-
-\subsection{Use case: show location}
-
-\begin{description}
-\item[Goal:] Traveller is shown location.
-\item[Actors:] Traveller, Staff.
-\item[Precondition:] -
-\item[Postcondition:] -
-\item[Steps:] 
-\begin{enumerate}
-\item Staff shows traveller the location.
-\end{enumerate}
-
-\item[Alternatives:] -
-\end{description}
-
-\subsection{Use case: fill in employee form}
-
-\begin{description}
-\item[Goal:] Employee fills in form.
-\item[Actors:] Staff.
-\item[Precondition:] -
-\item[Postcondition:] -
-\item[Steps:] 
-\begin{enumerate}
-\item Staff enter details (location id, form number, nights to stay).
-\end{enumerate}
-
-\item[Alternatives:] -
-\end{description}
-
-\section{Activity diagrams}
-
-\subsection{Book location}
-
-\begin{figure}[H]
-\begin{centering}
-\includegraphics[width=\textwidth]{gfx/activity_diagram_book.pdf} 
-\end{centering}
-\caption{Activity diagram of book location.}
-\label{fig:actdiag_book}
-\end{figure}
-
-Even though best practice is to only have one end-point per activity diagram, the provided activity diagram has two to improve readability.
-
-\subsection{GetCost()}
-
+The application should meet the specifications fully.

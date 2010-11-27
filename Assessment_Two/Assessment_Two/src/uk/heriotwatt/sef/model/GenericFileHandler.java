@@ -15,17 +15,17 @@ import org.apache.log4j.Logger;
 import uk.heriotwatt.sef.model.interfaces.FileHandler;
 import uk.heriotwatt.sef.model.interfaces.ICsvSerialisable;
 
-public class GenericFileHandler<T extends ICsvSerialisable<T>> implements FileHandler<T> {
+public class GenericFileHandler<T extends ICsvSerialisable<T>> implements
+		FileHandler<T> {
 
 	private final Logger logger = Logger.getLogger(getClass());
-	
+
 	private String filePath;
-	
-	public GenericFileHandler(String filePath)
-	{
+
+	public GenericFileHandler(String filePath) {
 		this.filePath = filePath;
 	}
-	
+
 	@Override
 	public void writeToFile(List<T> list) {
 		try {
@@ -34,7 +34,9 @@ public class GenericFileHandler<T extends ICsvSerialisable<T>> implements FileHa
 			BufferedWriter bw = new BufferedWriter(w);
 			for (T t : list) {
 				bw.write(t.csvRepresentation());
+				bw.write("\n");
 			}
+			bw.close();
 		} catch (FileNotFoundException e) {
 			logger.error("File not found exception: " + e.toString());
 		} catch (IOException e) {
@@ -57,7 +59,8 @@ public class GenericFileHandler<T extends ICsvSerialisable<T>> implements FileHa
 						T t = creationT.createFromString(nextLine);
 						tList.add(t);
 					} catch (IllegalArgumentException e) {
-						logger.error("IllegalArgumentException when creating object:" + e.toString());
+						logger.error("IllegalArgumentException when creating object:"
+								+ e.toString());
 					}
 				}
 			}

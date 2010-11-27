@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_Ka2XkPo0Ed-FP9J-RgeAEg">
+  <name xsi:nil="true"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Kbpo0Po0Ed-FP9J-RgeAEg" name="uk">
+    <packagedElement xmi:type="uml:Package" xmi:id="_Kbpo0fo0Ed-FP9J-RgeAEg" name="heriotwatt">
+      <packagedElement xmi:type="uml:Package" xmi:id="_Kbpo0vo0Ed-FP9J-RgeAEg" name="sef">
+        <packagedElement xmi:type="uml:Class" xmi:id="_KbreAPo0Ed-FP9J-RgeAEg" name="Starter">
+          <ownedOperation xmi:id="_Kb8jwfo0Ed-FP9J-RgeAEg" name="main" visibility="public" isStatic="true">
+            <eAnnotations xmi:id="_Kb8jwvo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_Kb8jw_o0Ed-FP9J-RgeAEg" key="documentation" value=" @param args&#xD;&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_Kb8jxPo0Ed-FP9J-RgeAEg" name="args" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_KbreAfo0Ed-FP9J-RgeAEg" name="LocationPresenter">
+          <ownedOperation xmi:id="_KcFtsfo0Ed-FP9J-RgeAEg" name="getAllLocations" visibility="public">
+            <ownedParameter xmi:id="_KcFtsvo0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_KcG70Po0Ed-FP9J-RgeAEg" name="getLocations" visibility="public">
+            <ownedParameter xmi:id="_KcG70fo0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_KcIJ8Po0Ed-FP9J-RgeAEg" name="searchLocations" visibility="public">
+            <ownedParameter xmi:id="_KcIJ8fo0Ed-FP9J-RgeAEg" name="search" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+            <ownedParameter xmi:id="_KcIJ8vo0Ed-FP9J-RgeAEg" name="category" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+            <ownedParameter xmi:id="_KcIJ8_o0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_KcJYEfo0Ed-FP9J-RgeAEg" name="orderLocations" visibility="public">
+            <ownedParameter xmi:id="_KcJYEvo0Ed-FP9J-RgeAEg" name="byId" type="_KcJYEPo0Ed-FP9J-RgeAEg"/>
+            <ownedParameter xmi:id="_KcJYE_o0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_KcKmMPo0Ed-FP9J-RgeAEg" name="findLocationById" visibility="public">
+            <ownedParameter xmi:id="_KcKmMfo0Ed-FP9J-RgeAEg" name="id" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+            <ownedParameter xmi:id="_KcKmMvo0Ed-FP9J-RgeAEg" name="return" type="_Kb1PCPo0Ed-FP9J-RgeAEg" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_KbreAvo0Ed-FP9J-RgeAEg" name="model">
+          <packagedElement xmi:type="uml:Enumeration" xmi:id="_KbssIPo0Ed-FP9J-RgeAEg" name="Facilities">
+            <eAnnotations xmi:id="_KbssIfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_KbtTMPo0Ed-FP9J-RgeAEg" key="documentation" value=" Stores the different possibilities of facilities.&#xD;&#xA; &#xD;&#xA; @author fhb2&#xD;&#xA; &#xD;&#xA;"/>
+            </eAnnotations>
+            <ownedLiteral xmi:id="_KcLNQPo0Ed-FP9J-RgeAEg" name="GENERAL_FACILITES"/>
+            <ownedLiteral xmi:id="_KcLNQfo0Ed-FP9J-RgeAEg" name="SEPERATE_BATHROOM"/>
+            <ownedLiteral xmi:id="_KcLNQvo0Ed-FP9J-RgeAEg" name="EN_SUITE"/>
+            <ownedLiteral xmi:id="_KcLNQ_o0Ed-FP9J-RgeAEg" name="UNKNOWN"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_KbuhUPo0Ed-FP9J-RgeAEg" name="GenericFileHandler" clientDependency="_KcLNRPo0Ed-FP9J-RgeAEg">
+            <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_KbuhUfo0Ed-FP9J-RgeAEg" parameter="_KbuhUvo0Ed-FP9J-RgeAEg">
+              <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_KbuhUvo0Ed-FP9J-RgeAEg" parameteredElement="_KbuhU_o0Ed-FP9J-RgeAEg">
+                <ownedParameteredElement xmi:type="uml:Class" xmi:id="_KbuhU_o0Ed-FP9J-RgeAEg" name="T" templateParameter="_KbuhUvo0Ed-FP9J-RgeAEg"/>
+              </ownedParameter>
+            </ownedTemplateSignature>
+            <interfaceRealization xmi:id="_KcLNRPo0Ed-FP9J-RgeAEg" name="FileHandler&lt;T>" supplier="_Kb2dIPo0Ed-FP9J-RgeAEg" client="_KbuhUPo0Ed-FP9J-RgeAEg" contract="_Kb2dIPo0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_KcU-QPo0Ed-FP9J-RgeAEg" name="writeToFile" visibility="public">
+              <ownedParameter xmi:id="_KcU-Qfo0Ed-FP9J-RgeAEg" name="list" type="_KcFtsPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcXagPo0Ed-FP9J-RgeAEg" name="readFromFile" visibility="public">
+              <ownedParameter xmi:id="_KcXagfo0Ed-FP9J-RgeAEg" name="creationT" type="_KbuhU_o0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KcXagvo0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_KbwWgPo0Ed-FP9J-RgeAEg" name="Cabin" clientDependency="_KcXag_o0Ed-FP9J-RgeAEg">
+            <eAnnotations xmi:id="_KbwWgfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_KbwWgvo0Ed-FP9J-RgeAEg" key="documentation" value=" Stores values associated with a cabin.&#xD;&#xA; &#xD;&#xA; @author fhb2&#xD;&#xA; &#xD;&#xA;"/>
+            </eAnnotations>
+            <generalization xmi:id="_KcXahPo0Ed-FP9J-RgeAEg" general="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+            <interfaceRealization xmi:id="_KcXag_o0Ed-FP9J-RgeAEg" name="ICsvSerialisable&lt;Cabin>" supplier="_Kb2dJPo0Ed-FP9J-RgeAEg" client="_KbwWgPo0Ed-FP9J-RgeAEg" contract="_Kb2dJPo0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_KcYBkPo0Ed-FP9J-RgeAEg" name="getNumberOfBeds" visibility="public">
+              <eAnnotations xmi:id="_KcYBkfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcYBkvo0Ed-FP9J-RgeAEg" key="documentation" value=" @return Array of beds.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcYBk_o0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcYBlPo0Ed-FP9J-RgeAEg" name="setNumberOfBeds" visibility="public">
+              <eAnnotations xmi:id="_KcYBlfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcYBlvo0Ed-FP9J-RgeAEg" key="documentation" value=" Sets the beds.&#xD;&#xA; &#xD;&#xA; @param numberOfBeds&#xD;&#xA;            The new array of beds.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcYBl_o0Ed-FP9J-RgeAEg" name="numberOfBeds" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcYBmPo0Ed-FP9J-RgeAEg" name="getFacilities" visibility="public">
+              <eAnnotations xmi:id="_KcYBmfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcYBmvo0Ed-FP9J-RgeAEg" key="documentation" value=" @return The facilities of the cabin.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcYBm_o0Ed-FP9J-RgeAEg" name="return" type="_KbssIPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcYooPo0Ed-FP9J-RgeAEg" name="setFacilities" visibility="public">
+              <eAnnotations xmi:id="_KcYoofo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcYoovo0Ed-FP9J-RgeAEg" key="documentation" value=" Attempts to set the facilites of the cabin.&#xD;&#xA; &#xD;&#xA; @param facilities&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcYoo_o0Ed-FP9J-RgeAEg" name="facilities" type="_KbssIPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcYopPo0Ed-FP9J-RgeAEg" name="getOwner" visibility="public">
+              <eAnnotations xmi:id="_KcYopfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcYopvo0Ed-FP9J-RgeAEg" key="documentation" value=" @return The owner of the cabin.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcYop_o0Ed-FP9J-RgeAEg" name="return" type="_KbzZ0Po0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcZPsPo0Ed-FP9J-RgeAEg" name="setOwner" visibility="public">
+              <eAnnotations xmi:id="_KcZPsfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcZPsvo0Ed-FP9J-RgeAEg" key="documentation" value=" Sets the owner of the cabin.&#xD;&#xA; &#xD;&#xA; @param owner&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcZPs_o0Ed-FP9J-RgeAEg" name="owner" type="_KbzZ0Po0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcZPtfo0Ed-FP9J-RgeAEg" name="getSize" visibility="public">
+              <eAnnotations xmi:id="_KcZPtvo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcZPt_o0Ed-FP9J-RgeAEg" key="documentation" value=" @return The size of the cabin.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcZPuPo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcZ2wPo0Ed-FP9J-RgeAEg" name="setSize" visibility="public">
+              <eAnnotations xmi:id="_KcZ2wfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcZ2wvo0Ed-FP9J-RgeAEg" key="documentation" value=" Sets the size of the cabin.&#xD;&#xA; &#xD;&#xA; @param size&#xD;&#xA;            The new size (must be bigger than 0)&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcZ2w_o0Ed-FP9J-RgeAEg" name="size" type="_KcZPtPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcZ2xPo0Ed-FP9J-RgeAEg" name="getCost" visibility="public">
+              <eAnnotations xmi:id="_KcZ2xfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcZ2xvo0Ed-FP9J-RgeAEg" key="documentation" value=" The cost is calculated based on different factors: - The condition. - The&#xD;&#xA; facilities. - The size. - The beds/rooms present (The less beds per room&#xD;&#xA; the more expensive). The values associated with the first three are&#xD;&#xA; stored in {@link PriceMapping}&#xD;&#xA; &#xD;&#xA; @return The cost if the cabin.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcZ2x_o0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kcad0Po0Ed-FP9J-RgeAEg" name="getCondition" visibility="public">
+              <eAnnotations xmi:id="_Kcad0fo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_Kcad0vo0Ed-FP9J-RgeAEg" key="documentation" value=" @return The condition.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_Kcad0_o0Ed-FP9J-RgeAEg" name="return" type="_Kbw9kPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kcad1Po0Ed-FP9J-RgeAEg" name="setCondition" visibility="public">
+              <eAnnotations xmi:id="_Kcad1fo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_Kcad1vo0Ed-FP9J-RgeAEg" key="documentation" value=" Sets the condition of the cabin.&#xD;&#xA; &#xD;&#xA; @param condition&#xD;&#xA;            New condition to be set.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_Kcad1_o0Ed-FP9J-RgeAEg" name="condition" type="_Kbw9kPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcbE4Po0Ed-FP9J-RgeAEg" name="getBeds" visibility="public">
+              <eAnnotations xmi:id="_KcbE4fo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcbE4vo0Ed-FP9J-RgeAEg" key="documentation" value=" @return The number of beds in the cabin.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcbE4_o0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KcbE5Po0Ed-FP9J-RgeAEg" name="calculateRoomToBedRatio" visibility="public">
+              <eAnnotations xmi:id="_KcbE5fo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KcbE5vo0Ed-FP9J-RgeAEg" key="documentation" value=" Calculates the room to bed ratio.&#xD;&#xA; &#xD;&#xA; @return The room to bed ratio.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KcbE5_o0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kc8CQPo0Ed-FP9J-RgeAEg" name="toString" visibility="public">
+              <ownedParameter xmi:id="_Kc8CQfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kc93cPo0Ed-FP9J-RgeAEg" name="csvRepresentation" visibility="public">
+              <ownedParameter xmi:id="_Kc93cfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdATsPo0Ed-FP9J-RgeAEg" name="createFromString" visibility="public">
+              <ownedParameter xmi:id="_KdATsfo0Ed-FP9J-RgeAEg" name="string" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdATsvo0Ed-FP9J-RgeAEg" name="return" type="_KbwWgPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Enumeration" xmi:id="_Kbw9kPo0Ed-FP9J-RgeAEg" name="Condition">
+            <eAnnotations xmi:id="_Kbw9kfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_Kbw9kvo0Ed-FP9J-RgeAEg" key="documentation" value=" Stores the different possibilities of conditions.&#xD;&#xA; &#xD;&#xA; @author fhb2&#xD;&#xA; &#xD;&#xA;"/>
+            </eAnnotations>
+            <ownedLiteral xmi:id="_KdATs_o0Ed-FP9J-RgeAEg" name="PERFECT"/>
+            <ownedLiteral xmi:id="_KdATtPo0Ed-FP9J-RgeAEg" name="GOOD"/>
+            <ownedLiteral xmi:id="_KdATtfo0Ed-FP9J-RgeAEg" name="FAIR"/>
+            <ownedLiteral xmi:id="_KdATtvo0Ed-FP9J-RgeAEg" name="BAD"/>
+            <ownedLiteral xmi:id="_KdATt_o0Ed-FP9J-RgeAEg" name="IN_SHAMBLES"/>
+            <ownedLiteral xmi:id="_KdATuPo0Ed-FP9J-RgeAEg" name="UNKNOWN"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_KbyLsPo0Ed-FP9J-RgeAEg" name="PriceComparator">
+            <eAnnotations xmi:id="_KbyLsfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_KbyLsvo0Ed-FP9J-RgeAEg" key="documentation" value=" Compares two locations based on their price.&#xD;&#xA; @author florian&#xD;&#xA;"/>
+            </eAnnotations>
+            <ownedOperation xmi:id="_KdKrwPo0Ed-FP9J-RgeAEg" name="compare" visibility="public">
+              <ownedParameter xmi:id="_KdKrwfo0Ed-FP9J-RgeAEg" name="o1" type="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdKrwvo0Ed-FP9J-RgeAEg" name="o2" type="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdKrw_o0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Enumeration" xmi:id="_KbyywPo0Ed-FP9J-RgeAEg" name="PriceList">
+            <eAnnotations xmi:id="_Kbyywfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_Kbyywvo0Ed-FP9J-RgeAEg" key="documentation" value=" Stores the price modifiers for certain discrete price categories.&#xD;&#xA; &#xD;&#xA; @author fhb2&#xD;&#xA; &#xD;&#xA;"/>
+            </eAnnotations>
+            <ownedAttribute xmi:id="_KdLS0Po0Ed-FP9J-RgeAEg" name="cost" visibility="private" type="_KcZPtPo0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_KdPkQPo0Ed-FP9J-RgeAEg" name="cost" visibility="public">
+              <ownedParameter xmi:id="_KdPkQfo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedLiteral xmi:id="_KdKrxPo0Ed-FP9J-RgeAEg" name="VERY_EXPENSIVE"/>
+            <ownedLiteral xmi:id="_KdKrxfo0Ed-FP9J-RgeAEg" name="EXPENSIVE"/>
+            <ownedLiteral xmi:id="_KdKrxvo0Ed-FP9J-RgeAEg" name="FAIR"/>
+            <ownedLiteral xmi:id="_KdKrx_o0Ed-FP9J-RgeAEg" name="BUDGET"/>
+            <ownedLiteral xmi:id="_KdKryPo0Ed-FP9J-RgeAEg" name="CHEAP"/>
+            <ownedLiteral xmi:id="_KdKryfo0Ed-FP9J-RgeAEg" name="UNKNOWN"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_KbzZ0Po0Ed-FP9J-RgeAEg" name="Name">
+            <ownedOperation xmi:id="_KdQyYPo0Ed-FP9J-RgeAEg" name="getFirstName" visibility="public">
+              <ownedParameter xmi:id="_KdQyYfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZcPo0Ed-FP9J-RgeAEg" name="getLastName" visibility="public">
+              <ownedParameter xmi:id="_KdRZcfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZcvo0Ed-FP9J-RgeAEg" name="setLastName" visibility="public">
+              <ownedParameter xmi:id="_KdRZc_o0Ed-FP9J-RgeAEg" name="ln" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZdPo0Ed-FP9J-RgeAEg" name="getFirstAndLastName" visibility="public">
+              <ownedParameter xmi:id="_KdRZdfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZdvo0Ed-FP9J-RgeAEg" name="getLastCommaFirst" visibility="public">
+              <ownedParameter xmi:id="_KdRZd_o0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZePo0Ed-FP9J-RgeAEg" name="getInitPeriodLast" visibility="public">
+              <ownedParameter xmi:id="_KdRZefo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZevo0Ed-FP9J-RgeAEg" name="getInitials" visibility="public">
+              <ownedParameter xmi:id="_KdRZe_o0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdRZffo0Ed-FP9J-RgeAEg" name="getMiddleName" visibility="public">
+              <ownedParameter xmi:id="_KdRZfvo0Ed-FP9J-RgeAEg" name="return" type="_KdRZfPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb0A4Po0Ed-FP9J-RgeAEg" name="NoCabinsException">
+            <generalization xmi:id="_KdRZgPo0Ed-FP9J-RgeAEg" general="_KdRZf_o0Ed-FP9J-RgeAEg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb0n8Po0Ed-FP9J-RgeAEg" name="LocationAlreadyBookedException">
+            <generalization xmi:id="_KdRZgfo0Ed-FP9J-RgeAEg" general="_KdRZf_o0Ed-FP9J-RgeAEg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb1PAPo0Ed-FP9J-RgeAEg" name="IdComparator">
+            <eAnnotations xmi:id="_Kb1PAfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_Kb1PAvo0Ed-FP9J-RgeAEg" key="documentation" value=" Compares two locations based on their ids.&#xD;&#xA; @author florian&#xD;&#xA;"/>
+            </eAnnotations>
+            <ownedOperation xmi:id="_KdXgEPo0Ed-FP9J-RgeAEg" name="compare" visibility="public">
+              <ownedParameter xmi:id="_KdXgEfo0Ed-FP9J-RgeAEg" name="o1" type="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdXgEvo0Ed-FP9J-RgeAEg" name="o2" type="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdXgE_o0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb1PA_o0Ed-FP9J-RgeAEg" name="LocationManager">
+            <generalization xmi:id="_KdXgFfo0Ed-FP9J-RgeAEg" general="_KdXgFPo0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_KddmsPo0Ed-FP9J-RgeAEg" name="getLocations" visibility="public">
+              <ownedParameter xmi:id="_Kddmsfo0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtUPo0Ed-FP9J-RgeAEg" name="addLocation" visibility="public">
+              <ownedParameter xmi:id="_KdjtUfo0Ed-FP9J-RgeAEg" name="cab" type="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtUvo0Ed-FP9J-RgeAEg" name="findLocationById" visibility="public">
+              <eAnnotations xmi:id="_KdjtU_o0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KdjtVPo0Ed-FP9J-RgeAEg" key="documentation" value=" Attempts to find a cabin with the provided cabinNumber in the cabin-List.&#xD;&#xA; @param id&#xD;&#xA;            The cabinnumber of the cabin to be returned&#xD;&#xA; @return The first cabin in the list with the corresponding cabinnumber.&#xD;&#xA; @throws CabinNotFoundException&#xD;&#xA;             If no cabin with the provided number could be found.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KdjtVfo0Ed-FP9J-RgeAEg" name="id" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdjtVvo0Ed-FP9J-RgeAEg" name="return" type="_Kb1PCPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtV_o0Ed-FP9J-RgeAEg" name="getCabinAtIndex" visibility="public">
+              <eAnnotations xmi:id="_KdjtWPo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KdjtWfo0Ed-FP9J-RgeAEg" key="documentation" value=" Retrieves that cabin at the specified position in the cabin list.&#xD;&#xA; @param index&#xD;&#xA;            The position for which the cabin should be returned.&#xD;&#xA; @return Tha cabin.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KdjtWvo0Ed-FP9J-RgeAEg" name="index" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KdjtW_o0Ed-FP9J-RgeAEg" name="return" type="_Kb1PCPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtXPo0Ed-FP9J-RgeAEg" name="getMaximumPossibleIncome" visibility="public">
+              <eAnnotations xmi:id="_KdjtXfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KdjtXvo0Ed-FP9J-RgeAEg" key="documentation" value=" Returns the maximum possible income that could be achieved. Therefore the&#xD;&#xA; cost for all cabins are added up.&#xD;&#xA; @return The added cost of all cabins.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KdjtX_o0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtYPo0Ed-FP9J-RgeAEg" name="getCheapestCabinCost" visibility="public">
+              <eAnnotations xmi:id="_KdjtYfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KdjtYvo0Ed-FP9J-RgeAEg" key="documentation" value=" Returns the cost for the cheapest cabin.&#xD;&#xA; @return The cost of the cheapest cabin.&#xD;&#xA; @throws NoCabinsException&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KdjtY_o0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtZPo0Ed-FP9J-RgeAEg" name="getExpensiveCabinCost" visibility="public">
+              <eAnnotations xmi:id="_KdjtZfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KdjtZvo0Ed-FP9J-RgeAEg" key="documentation" value=" Returns the cost for the most expensive cabin.&#xD;&#xA; @return The cost of the most expensive cabin.&#xD;&#xA; @throws NoCabinsException&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_KdjtZ_o0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtaPo0Ed-FP9J-RgeAEg" name="getNumberOfCabins" visibility="public">
+              <eAnnotations xmi:id="_Kdjtafo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_Kdjtavo0Ed-FP9J-RgeAEg" key="documentation" value=" Returns the number of cabins currently registered in the list.&#xD;&#xA; @return The number of cabins.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_Kdjta_o0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KdjtbPo0Ed-FP9J-RgeAEg" name="bookLocation" visibility="public">
+              <ownedParameter xmi:id="_Kdjtbfo0Ed-FP9J-RgeAEg" name="bookedLocation" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kdjtbvo0Ed-FP9J-RgeAEg" name="orderLocations" visibility="public">
+              <eAnnotations xmi:id="_Kdjtb_o0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_KdjtcPo0Ed-FP9J-RgeAEg" key="documentation" value=" Orders the present list of locations.&#xD;&#xA; Either by their id, or by price.&#xD;&#xA; @param locations2 &#xD;&#xA; @param byId True of order by id, false if order by price.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_Kdjtcfo0Ed-FP9J-RgeAEg" name="locations2" type="_KcFtsPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kdjtcvo0Ed-FP9J-RgeAEg" name="byId" type="_KcJYEPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kdjtc_o0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kdpz8Po0Ed-FP9J-RgeAEg" name="searchLocations" visibility="public">
+              <eAnnotations xmi:id="_Kdpz8fo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_Kdpz8vo0Ed-FP9J-RgeAEg" key="documentation" value=" Searches the list of location for matches with the provided parameters.&#xD;&#xA; @param searchString The string that should be matched. In case of the compared attribute being not a string, only a perfect match will return true.&#xD;&#xA; @param category The category specifies the compared attributes: id, price, booked, area.&#xD;&#xA; @return A list of the matching locations. If no search string is provided then all locations are returned.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_Kdpz8_o0Ed-FP9J-RgeAEg" name="searchString" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kdpz9Po0Ed-FP9J-RgeAEg" name="category" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kdpz9fo0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kdpz9vo0Ed-FP9J-RgeAEg" name="saveLocations" visibility="public"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb1PBPo0Ed-FP9J-RgeAEg" name="PriceMapping">
+            <eAnnotations xmi:id="_Kb1PBfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_Kb1PBvo0Ed-FP9J-RgeAEg" key="documentation" value=" Class to seperate the pricing mapping from the information of the cabin.&#xD;&#xA; &#xD;&#xA; @author florian&#xD;&#xA; &#xD;&#xA;"/>
+            </eAnnotations>
+            <ownedOperation xmi:id="_Kdzk8fo0Ed-FP9J-RgeAEg" name="getConditionPrices" visibility="public">
+              <ownedParameter xmi:id="_Kdzk8vo0Ed-FP9J-RgeAEg" name="return" type="_Kdzk8Po0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd0zEPo0Ed-FP9J-RgeAEg" name="getFacilityPrices" visibility="public">
+              <ownedParameter xmi:id="_Kd0zEfo0Ed-FP9J-RgeAEg" name="return" type="_Kdzk8Po0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd2BMPo0Ed-FP9J-RgeAEg" name="getFacilityPrice" visibility="public">
+              <ownedParameter xmi:id="_Kd2BMfo0Ed-FP9J-RgeAEg" name="facilities" type="_KbssIPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kd2BMvo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd3PUPo0Ed-FP9J-RgeAEg" name="getConditionPrice" visibility="public">
+              <ownedParameter xmi:id="_Kd3PUfo0Ed-FP9J-RgeAEg" name="condition" type="_Kbw9kPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kd3PUvo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd32YPo0Ed-FP9J-RgeAEg" name="getSizeModifier" visibility="public">
+              <eAnnotations xmi:id="_Kd32Yfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+                <details xmi:id="_Kd32Yvo0Ed-FP9J-RgeAEg" key="documentation" value=" Return the size modifier that can be used to calculate a price for a&#xD;&#xA; cabin.&#xD;&#xA; &#xD;&#xA; @param size&#xD;&#xA;            The size of the cabin.&#xD;&#xA; @return The size modifier according to the provided size of a room.&#xD;&#xA;&#x9;"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_Kd32Y_o0Ed-FP9J-RgeAEg" name="size" type="_KcZPtPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_Kd32ZPo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb1PB_o0Ed-FP9J-RgeAEg" name="CabinNotFoundException">
+            <generalization xmi:id="_Kd32Zfo0Ed-FP9J-RgeAEg" general="_KdRZf_o0Ed-FP9J-RgeAEg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb1PCPo0Ed-FP9J-RgeAEg" name="Location" isAbstract="true">
+            <ownedOperation xmi:id="_Kd4dcPo0Ed-FP9J-RgeAEg" name="getId" visibility="public">
+              <ownedParameter xmi:id="_Kd4dcfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd5EgPo0Ed-FP9J-RgeAEg" name="setId" visibility="public">
+              <ownedParameter xmi:id="_Kd5rkPo0Ed-FP9J-RgeAEg" name="id" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd6SoPo0Ed-FP9J-RgeAEg" name="isBooked" visibility="public">
+              <ownedParameter xmi:id="_Kd6Sofo0Ed-FP9J-RgeAEg" name="return" type="_KcJYEPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd7gwPo0Ed-FP9J-RgeAEg" name="setBooked" visibility="public">
+              <ownedParameter xmi:id="_Kd7gwfo0Ed-FP9J-RgeAEg" name="isBooked" type="_KcJYEPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd8H0Po0Ed-FP9J-RgeAEg" name="getBookings" visibility="public">
+              <ownedParameter xmi:id="_Kd8H0fo0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd8u4Po0Ed-FP9J-RgeAEg" name="setBookings" visibility="public">
+              <ownedParameter xmi:id="_Kd8u4fo0Ed-FP9J-RgeAEg" name="bookings" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd99APo0Ed-FP9J-RgeAEg" name="getSize" visibility="public">
+              <ownedParameter xmi:id="_Kd99Afo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd-kEPo0Ed-FP9J-RgeAEg" name="setSize" visibility="public">
+              <ownedParameter xmi:id="_Kd-kEfo0Ed-FP9J-RgeAEg" name="size" type="_KcZPtPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_Kd_LIPo0Ed-FP9J-RgeAEg" name="getCost" visibility="public" isAbstract="true">
+              <ownedParameter xmi:id="_Kd_LIfo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeAZQPo0Ed-FP9J-RgeAEg" name="toString" visibility="public">
+              <ownedParameter xmi:id="_KeAZQfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb12EPo0Ed-FP9J-RgeAEg" name="Plot" clientDependency="_KeAZQvo0Ed-FP9J-RgeAEg">
+            <generalization xmi:id="_KeAZQ_o0Ed-FP9J-RgeAEg" general="_Kb1PCPo0Ed-FP9J-RgeAEg"/>
+            <interfaceRealization xmi:id="_KeAZQvo0Ed-FP9J-RgeAEg" name="ICsvSerialisable&lt;Plot>" supplier="_Kb2dJPo0Ed-FP9J-RgeAEg" client="_Kb12EPo0Ed-FP9J-RgeAEg" contract="_Kb2dJPo0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_KeBnYPo0Ed-FP9J-RgeAEg" name="isHasElectricity" visibility="public">
+              <ownedParameter xmi:id="_KeBnYfo0Ed-FP9J-RgeAEg" name="return" type="_KcJYEPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeC1gPo0Ed-FP9J-RgeAEg" name="setHasElectricity" visibility="public">
+              <ownedParameter xmi:id="_KeC1gfo0Ed-FP9J-RgeAEg" name="hasElectricity" type="_KcJYEPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeEDoPo0Ed-FP9J-RgeAEg" name="getCost" visibility="public">
+              <ownedParameter xmi:id="_KeEDofo0Ed-FP9J-RgeAEg" name="return" type="_KcZPtPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeFRwPo0Ed-FP9J-RgeAEg" name="toString" visibility="public">
+              <ownedParameter xmi:id="_KeFRwfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeGf4Po0Ed-FP9J-RgeAEg" name="csvRepresentation" visibility="public">
+              <ownedParameter xmi:id="_KeGf4fo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeHuAPo0Ed-FP9J-RgeAEg" name="createFromString" visibility="public">
+              <ownedParameter xmi:id="_KeHuAfo0Ed-FP9J-RgeAEg" name="string" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KeHuAvo0Ed-FP9J-RgeAEg" name="return" type="_Kb12EPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_Kb12Efo0Ed-FP9J-RgeAEg" name="interfaces">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_Kb2dIPo0Ed-FP9J-RgeAEg" name="FileHandler">
+              <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_Kb2dIfo0Ed-FP9J-RgeAEg" parameter="_Kb2dIvo0Ed-FP9J-RgeAEg">
+                <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_Kb2dIvo0Ed-FP9J-RgeAEg" parameteredElement="_Kb2dI_o0Ed-FP9J-RgeAEg">
+                  <ownedParameteredElement xmi:type="uml:Class" xmi:id="_Kb2dI_o0Ed-FP9J-RgeAEg" name="T" templateParameter="_Kb2dIvo0Ed-FP9J-RgeAEg"/>
+                </ownedParameter>
+              </ownedTemplateSignature>
+              <ownedOperation xmi:id="_KeI8IPo0Ed-FP9J-RgeAEg" name="writeToFile" visibility="public">
+                <ownedParameter xmi:id="_KeI8Ifo0Ed-FP9J-RgeAEg" name="list" type="_KcFtsPo0Ed-FP9J-RgeAEg"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_KeJjMPo0Ed-FP9J-RgeAEg" name="readFromFile" visibility="public">
+                <ownedParameter xmi:id="_KeJjMfo0Ed-FP9J-RgeAEg" name="creationT" type="_Kb2dI_o0Ed-FP9J-RgeAEg"/>
+                <ownedParameter xmi:id="_KeJjMvo0Ed-FP9J-RgeAEg" name="return" type="_KcFtsPo0Ed-FP9J-RgeAEg" direction="return"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_Kb2dJPo0Ed-FP9J-RgeAEg" name="ICsvSerialisable">
+              <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_Kb2dJfo0Ed-FP9J-RgeAEg" parameter="_Kb2dJvo0Ed-FP9J-RgeAEg">
+                <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_Kb2dJvo0Ed-FP9J-RgeAEg" parameteredElement="_Kb2dJ_o0Ed-FP9J-RgeAEg">
+                  <ownedParameteredElement xmi:type="uml:Class" xmi:id="_Kb2dJ_o0Ed-FP9J-RgeAEg" name="T" templateParameter="_Kb2dJvo0Ed-FP9J-RgeAEg"/>
+                </ownedParameter>
+              </ownedTemplateSignature>
+              <ownedOperation xmi:id="_KeKKQPo0Ed-FP9J-RgeAEg" name="csvRepresentation" visibility="public">
+                <ownedParameter xmi:id="_KeKKQfo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_KeKxUPo0Ed-FP9J-RgeAEg" name="createFromString" visibility="public">
+                <ownedParameter xmi:id="_KeKxUfo0Ed-FP9J-RgeAEg" name="string" type="_Kb8jwPo0Ed-FP9J-RgeAEg"/>
+                <ownedParameter xmi:id="_KeKxUvo0Ed-FP9J-RgeAEg" name="return" type="_Kb2dJ_o0Ed-FP9J-RgeAEg" direction="return"/>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KcXahfo0Ed-FP9J-RgeAEg" name="int"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KcZPtPo0Ed-FP9J-RgeAEg" name="double"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KdRZfPo0Ed-FP9J-RgeAEg" name="Object"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KdRZf_o0Ed-FP9J-RgeAEg" name="Exception"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KdXgFPo0Ed-FP9J-RgeAEg" name="Observable"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_Kdzk8Po0Ed-FP9J-RgeAEg" name="Map"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_Kb2dKPo0Ed-FP9J-RgeAEg" name="view">
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb3rQPo0Ed-FP9J-RgeAEg" name="LocationTableModel">
+            <generalization xmi:id="_KeKxVPo0Ed-FP9J-RgeAEg" general="_KeKxU_o0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_Keb3EPo0Ed-FP9J-RgeAEg" name="getColumnCount" visibility="public">
+              <ownedParameter xmi:id="_Keb3Efo0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KehWoPo0Ed-FP9J-RgeAEg" name="getColumnName" visibility="public">
+              <ownedParameter xmi:id="_KehWofo0Ed-FP9J-RgeAEg" name="col" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KehWovo0Ed-FP9J-RgeAEg" name="return" type="_Kb8jwPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KejL0Po0Ed-FP9J-RgeAEg" name="getRowCount" visibility="public">
+              <ownedParameter xmi:id="_KejL0fo0Ed-FP9J-RgeAEg" name="return" type="_KcXahfo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeloEPo0Ed-FP9J-RgeAEg" name="getValueAt" visibility="public">
+              <ownedParameter xmi:id="_KeloEfo0Ed-FP9J-RgeAEg" name="arg0" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KeloEvo0Ed-FP9J-RgeAEg" name="arg1" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KeloE_o0Ed-FP9J-RgeAEg" name="return" type="_KdRZfPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KeorYfo0Ed-FP9J-RgeAEg" name="getColumnClass" visibility="public">
+              <ownedParameter xmi:id="_KeorYvo0Ed-FP9J-RgeAEg" name="c" type="_KcXahfo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KeorY_o0Ed-FP9J-RgeAEg" name="return" type="_KeorYPo0Ed-FP9J-RgeAEg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb6ukPo0Ed-FP9J-RgeAEg" name="MainWindow">
+            <generalization xmi:id="_KeorZfo0Ed-FP9J-RgeAEg" general="_KeorZPo0Ed-FP9J-RgeAEg"/>
+            <ownedOperation xmi:id="_KfdKwfo0Ed-FP9J-RgeAEg" name="setLocationBooked" visibility="public">
+              <ownedParameter xmi:id="_KfdKwvo0Ed-FP9J-RgeAEg" name="button" type="_KfdKwPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KfdKw_o0Ed-FP9J-RgeAEg" name="isBooked" type="_KcJYEPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KfmUsfo0Ed-FP9J-RgeAEg" name="actionPerformed" visibility="public">
+              <ownedParameter xmi:id="_KfmUsvo0Ed-FP9J-RgeAEg" name="e" type="_KfmUsPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_KfwFsPo0Ed-FP9J-RgeAEg" name="update" visibility="public">
+              <ownedParameter xmi:id="_KfwFsfo0Ed-FP9J-RgeAEg" name="o" type="_KdXgFPo0Ed-FP9J-RgeAEg"/>
+              <ownedParameter xmi:id="_KfwFsvo0Ed-FP9J-RgeAEg" name="arg" type="_KdRZfPo0Ed-FP9J-RgeAEg"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Kb78sPo0Ed-FP9J-RgeAEg" name="OverviewWindow">
+            <eAnnotations xmi:id="_Kb78sfo0Ed-FP9J-RgeAEg" source="http://www.topcased.org/documentation">
+              <details xmi:id="_Kb78svo0Ed-FP9J-RgeAEg" key="documentation" value="&#xD;&#xA; @author Florian Bergmann&#xD;&#xA;"/>
+            </eAnnotations>
+            <generalization xmi:id="_KfwFs_o0Ed-FP9J-RgeAEg" general="_KeorZPo0Ed-FP9J-RgeAEg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KeKxU_o0Ed-FP9J-RgeAEg" name="AbstractTableModel"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KeorYPo0Ed-FP9J-RgeAEg" name="Class"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KeorZPo0Ed-FP9J-RgeAEg" name="JFrame"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KfdKwPo0Ed-FP9J-RgeAEg" name="JButton"/>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_KfmUsPo0Ed-FP9J-RgeAEg" name="ActionEvent"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Kb8jwPo0Ed-FP9J-RgeAEg" name="String"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_KcFtsPo0Ed-FP9J-RgeAEg" name="List"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_KcJYEPo0Ed-FP9J-RgeAEg" name="boolean"/>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

@@ -1,10 +1,15 @@
 package uk.heriotwatt.sef.model;
 
+import java.util.Formatter;
+import java.util.Locale;
+
 import org.apache.log4j.Logger;
 
 import uk.heriotwatt.sef.model.interfaces.ICsvSerialisable;
 
 public class Plot extends Location implements ICsvSerialisable<Plot> {
+
+	private static final int ELECTRICITY_SURPLUS = 10;
 
 	private final Logger logger = Logger.getLogger(getClass());
 
@@ -44,7 +49,7 @@ public class Plot extends Location implements ICsvSerialisable<Plot> {
 		PriceMapping pm = new PriceMapping();
 		double cost = pm.getSizeModifier(this.getSize());
 		if (this.isHasElectricity()) {
-			cost += 10;
+			cost += ELECTRICITY_SURPLUS;
 		}
 		return cost;
 	}
@@ -57,9 +62,11 @@ public class Plot extends Location implements ICsvSerialisable<Plot> {
 
 	@Override
 	public String csvRepresentation() {
-		String string = String.format("%1,%2,%3,%4", this.getId(),
+		StringBuilder sb = new StringBuilder();
+		Formatter formatter = new Formatter(sb, Locale.UK);
+		formatter.format("%s,%f,%b,%d", this.getId(),
 				this.getSize(), this.isHasElectricity(), this.getBookings());
-		return string;
+		return sb.toString();
 	}
 
 	@Override

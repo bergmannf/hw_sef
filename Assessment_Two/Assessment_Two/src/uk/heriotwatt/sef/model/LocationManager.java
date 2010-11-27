@@ -142,7 +142,7 @@ public class LocationManager extends Observable {
 		return this.locations.size();
 	}
 
-	public void bookLocation(String bookedLocation, int nights)
+	public void bookLocation(String bookedLocation)
 		throws LocationAlreadyBookedException {
 		try {
 			Location loc = this.findLocationById(bookedLocation);
@@ -165,18 +165,22 @@ public class LocationManager extends Observable {
 	/**
 	 * Orders the present list of locations.
 	 * Either by their id, or by price.
+	 * @param locations2 
 	 *
 	 * @param byId True of order by id, false if order by price.
 	 */
-	public void orderLocations(boolean byId) {
+	public List<Location> orderLocations(List<Location> locations2, boolean byId) {
+		List<Location> returnList;
 		if (byId) {
-			Collections.sort(locations, new IdComparator());
+			Collections.sort(locations2, new IdComparator());
 		} else {
-			Collections.sort(locations, new PriceComparator());
+			Collections.sort(locations2, new PriceComparator());
 		}
 		this.setChanged();
 		this.notifyObservers(true);
 		this.clearChanged();
+		returnList = locations2;
+		return returnList;
 	}
 
 	/**
@@ -225,6 +229,22 @@ public class LocationManager extends Observable {
 			returnList = this.locations;
 		}
 		return returnList;
+	}
+
+	public void saveLocations() {
+		List<Cabin> cabins = new LinkedList<Cabin>();
+		List<Plot> plots = new LinkedList<Plot>();
+		for (Location loc : this.locations) {
+			if (loc instanceof Cabin)
+			{
+				cabins.add((Cabin) loc);
+			}
+			else {
+				plots.add((Plot) loc);
+			}
+		}
+		this.cfh.writeToFile(cabins);
+		this.lfh.writeToFile(plots);
 	}
 
 }

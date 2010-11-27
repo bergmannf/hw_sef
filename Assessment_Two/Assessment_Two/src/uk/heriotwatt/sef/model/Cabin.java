@@ -1,5 +1,8 @@
 package uk.heriotwatt.sef.model;
 
+import java.util.Formatter;
+import java.util.Locale;
+
 import uk.heriotwatt.sef.model.interfaces.ICsvSerialisable;
 
 /**
@@ -216,15 +219,17 @@ public class Cabin extends Location implements ICsvSerialisable<Cabin> {
 
 	@Override
 	public String csvRepresentation() {
-		String string = String.format("%1,%2,%3,%4,%5,%6,%7,%8", this.getId(), this
+		StringBuilder sb = new StringBuilder();
+		Formatter formatter = new Formatter(sb, Locale.UK);
+		formatter.format("%s,%f,%s,%s,%s,%s,%s,%d", this.getId(), this
 				.getSize(), this.facilities.toString(), this.condition
 				.toString(), this.getOwner().getFirstName(), this.getOwner()
 				.getMiddleName(), this.getOwner().getLastName(), this.getBookings());
 		for (int i : this.beds)
 		{
-			string += "," + i;
+			formatter.format(",%d", i);
 		}
-		return string;
+		return sb.toString();
 	}
 
 	@Override

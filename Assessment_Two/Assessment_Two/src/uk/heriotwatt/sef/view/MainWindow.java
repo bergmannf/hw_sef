@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -55,7 +56,6 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 	private JTextField searchTextField;
 	private JComboBox categoryComboBox;
 	private JButton searchButton;
-	private JTextField numberOfNightsTextField;
 	private JComboBox locationComboBox;
 	private JButton bookButton;
 	private JTextField priceTextField;
@@ -70,10 +70,12 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 	private JTextField ownerTextField;
 	private JTextField electricityTextField;
 	private JTextField bookingsTextField;
+	private LocationPresenter presenter;
 
 	public MainWindow(LocationManager manager) {
 		this.manager = manager;
 		this.manager.addObserver(this);
+		this.presenter = new LocationPresenter(manager);
 		this.initializeComponents();
 		this.displayLocations(manager.getLocations());
 	}
@@ -125,7 +127,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 			public void actionPerformed(ActionEvent e) {
 				String searchString = searchTextField.getText();
 				String category = categoryComboBox.getSelectedItem().toString();
-				List<Location> searchedList = manager.searchLocations(searchString, category);
+				List<Location> searchedList = presenter.searchLocations(searchString, category);
 				displayLocations(searchedList);
 			}
 		});
@@ -146,6 +148,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 		exitItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				manager.saveLocations();
 				System.exit(NORMAL);
 			}
 		});
@@ -156,8 +159,6 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 		 * Creating the edit submenu.
 		 */
 		JMenu editMenu = new JMenu("Edit");
-		JMenuItem addLocationMenuItem = new JMenuItem("Add Location");
-		addLocationMenuItem.setIcon(new ImageIcon("resources/map_add.png"));
 		JMenu orderMenu = new JMenu("Order by:");
 		orderMenu.setIcon(new ImageIcon("resources/sort_ascending.png"));
 		JMenuItem orderByIdItem = new JMenuItem("Id");
@@ -166,7 +167,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				manager.orderLocations(true);
+				presenter.orderLocations(true);
 			}
 		});
 
@@ -176,7 +177,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				manager.orderLocations(false);
+				presenter.orderLocations(false);
 			}
 		});
 
@@ -186,11 +187,10 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO: Create a new window containing a JTable.
+				OverviewWindow window = new OverviewWindow(manager.getLocations());
+				window.setVisible(true);
 			}
 		});
-
-		editMenu.add(addLocationMenuItem);
 		orderMenu.add(orderByIdItem);
 		orderMenu.add(orderByCostItem);
 		editMenu.add(orderMenu);
@@ -258,10 +258,9 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 		Border border = new TitledBorder("Booking:");
 		bookingPanel.setBorder(border);
 
-		GridLayout gl = new GridLayout(0, 3, 5, 0);
+		GridLayout gl = new GridLayout(0, 2, 5, 0);
 		bookingPanel.setLayout(gl);
 
-		numberOfNightsTextField = new JTextField();
 		locationComboBox = new JComboBox();
 		bookButton = new JButton("Book", new ImageIcon("resources/money.png"));
 		bookButton.addActionListener(new ActionListener() {
@@ -270,20 +269,18 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 			public void actionPerformed(ActionEvent e) {
 				String bookedLocation = locationComboBox.getSelectedItem()
 						.toString();
-				String numberOfNights = numberOfNightsTextField.getText();
 				try {
-					int nights = Integer.parseInt(numberOfNights);
-					manager.bookLocation(bookedLocation, nights);
+					manager.bookLocation(bookedLocation);
 				} catch (NumberFormatException e2) {
 					e2.printStackTrace();
 				} catch (LocationAlreadyBookedException e1) {
+					JOptionPane.showMessageDialog(null, "Location already booked.");
 					e1.printStackTrace();
 				}
 
 			}
 		});
 		bookingPanel.add(locationComboBox);
-		bookingPanel.add(numberOfNightsTextField);
 		bookingPanel.add(bookButton);
 	}
 
@@ -317,6 +314,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 			this.locationComboBox.addItem(location.getId());
 		}
+		this.repaint();
 	}
 
 	@Override
@@ -333,7 +331,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 	private void displayLocation(String id) {
 		Location location;
 		try {
-			location = manager.findLocationById(id);
+			location = presenter.findLocationById(id);
 			this.idTextField.setText(location.getId());
 			this.bookingsTextField.setText(String.valueOf(location.getBookings()));
 			String cost = String.valueOf(location.getCost());
@@ -375,6 +373,6 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 	}
 
 	private void reloadData() {
-		this.displayLocations(this.manager.getLocations());
+		this.displayLocations(this.presenter.getLocations());
 	}
 }
