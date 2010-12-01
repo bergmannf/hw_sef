@@ -12,7 +12,7 @@ From the textual description of the use case the following use case diagram was 
 \label{fig:usecase}
 \end{figure}
 
-The complexity level with many \textit{include} cases was choose to justify the use of a diagram and to show the possible sub-cases that might be reused.
+The complexity level with many \textit{include} cases was chosen, to justify the use of a diagram and to show the possible sub-cases that might be reused.
 
 Following from this description the \textit{book location} high-ceremony use case would look like the following scenario:
 
@@ -24,7 +24,7 @@ Following from this description the \textit{book location} high-ceremony use cas
 \item[Goal:] Book a location.
 \item[Actors:] Traveller, Staff.
 \item[Precondition:] A location is available.
-\item[Postcondition:] The traveller has booked a location for one night.
+\item[Postcondition:] The traveller has booked a location for (at least) one night.
 \item[Steps:]
 \begin{enumerate}
 \item Traveller \textit{fills in form}.
@@ -45,7 +45,7 @@ The booking fails.
 \subsection{Use case: fill in form}
 
 \begin{description}
-\item[Goal:] Fill in form.
+\item[Goal:] Traveller form is filled in.
 \item[Actors:] Traveller, Staff.
 \item[Precondition:] User wants to book a location.
 \item[Postcondition:] Form was filled in correct.
@@ -69,11 +69,11 @@ The booking fails.
 \begin{description}
 \item[Goal:] Pay for stay.
 \item[Actors:] Traveller, Staff.
-\item[Precondition:] -
-\item[Postcondition:] -
-\item[Steps:] -
+\item[Precondition:] Location and number of nights have been chosen.
+\item[Postcondition:] Payment is finished.
+\item[Steps:]
 \begin{enumerate}
-\item Traveller pays for one night.
+\item Traveller pays for desired number of nights.
 \item Staff accepts payment.
 \item Staff marks payment as received.
 \end{enumerate}
@@ -90,7 +90,7 @@ The payment fails.
 \begin{description}
 \item[Goal:] Traveller is shown location.
 \item[Actors:] Traveller, Staff.
-\item[Precondition:] -
+\item[Precondition:] Payment is finished.
 \item[Postcondition:] -
 \item[Steps:] 
 \begin{enumerate}

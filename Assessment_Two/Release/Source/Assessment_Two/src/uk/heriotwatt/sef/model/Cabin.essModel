@@ -1,0 +1,70 @@
+[Box: ::uk.heriotwatt.sef.model - ::<<Unknown>>::Comparator]
+X=651
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::<<Unknown>>::Exception]
+X=238
+Y=40
+
+[Box: ::uk.heriotwatt.sef.model - ::<<Unknown>>::Observable]
+X=924
+Y=40
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model.interfaces::ICsvSerialisable]
+X=1101
+Y=487
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::Cabin]
+X=1266
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::CabinNotFoundException]
+X=446
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::GenericFileHandler]
+X=225
+Y=487
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::IdComparator]
+X=514
+Y=40
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::Location]
+X=1164
+Y=40
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::LocationAlreadyBookedException]
+X=20
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::LocationManager]
+X=856
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::Name]
+X=20
+Y=487
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::NoCabinsException]
+X=241
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::Plot]
+X=1061
+Y=330
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::PriceComparator]
+X=719
+Y=40
+
+[Box: ::uk.heriotwatt.sef.model - ::uk.heriotwatt.sef.model::PriceMapping]
+X=430
+Y=487
+
+[Diagram: ::uk.heriotwatt.sef.model]
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowAssoc=1
+

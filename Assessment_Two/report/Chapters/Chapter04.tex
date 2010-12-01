@@ -27,7 +27,7 @@ If the location is successfully booked, the manager will notify the \ac{GUI} via
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=\textwidth]{gfx/location_booked.png} 
+\includegraphics[scale=0.75]{gfx/location_booked.png} 
 \end{center}
 \caption{Successfully Booked location marked with red flag.}
 \label{fig:booked_location}
@@ -50,6 +50,22 @@ To display a location's information, the user simply clicks on one of the button
 
 This will trigger the \texttt{actionPerformed}-event of the button that is linked to the \texttt{actionListener} implemented in the \texttt{MainWindow}.
 
-In the actionListener the source of the event is cast to a \texttt{JButton}, the text of the button (equal to a location's id) is read and the \texttt{displayLocation}-method is called.
+In the actionListener the source of the event is cast to a \texttt{JButton}, the text of the button (equal to a location's id) is read and the \texttt{displayLocation}-method is called with the string \texttt{id}.
 
-The \texttt{displayLocation}-method fills out the fields common to cabins and plots and the determines whether the displayed location is a cabin or plot. According to the result the location is cast to the appropriate type and the remaining fields are filled in.
+The \texttt{displayLocation}-method first retrieves the location associated with the \texttt{id}, then fills out the fields common to cabins and plots (id, bookings, price, size). Then it is determined whether the displayed location is a cabin or plot. According to the result the location is cast to the appropriate type and the remaining fields are filled in.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{gfx/details_sequence.png} 
+\end{center}
+\caption{Sequence diagrams of displaying location details.}
+\label{fig:details_sequence}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.75]{gfx/display_screen.png} 
+\end{center}
+\caption{Location details are displayed in the gui.}
+\label{fig:details_screen}
+\end{figure}
